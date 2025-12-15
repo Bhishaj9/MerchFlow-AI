@@ -1,4 +1,26 @@
 import os
+import subprocess
+
+def update_requirements():
+    req_file = "requirements.txt"
+    if not os.path.exists(req_file):
+        with open(req_file, "w") as f:
+            f.write("httpx\n")
+        print(f"Created {req_file} with httpx.")
+        return
+
+    with open(req_file, "r") as f:
+        content = f.read()
+    
+    if "httpx" not in content:
+        with open(req_file, "a") as f:
+            f.write("\nhttpx\n")
+        print("Appended httpx to requirements.txt.")
+    else:
+        print("httpx already in requirements.txt.")
+
+def update_main():
+    main_content = r'''import os
 import httpx
 import asyncio
 from fastapi import FastAPI, UploadFile, File
@@ -73,3 +95,32 @@ async def send_to_n8n(url, data):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=7860)
+'''
+    with open("main.py", "w", encoding="utf-8") as f:
+        f.write(main_content)
+    print("Updated main.py with N8N integration logic.")
+
+def deploy():
+    try:
+        subprocess.run(["git", "add", "."], check=True)
+        # Check if there are changes to commit
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if status.stdout.strip():
+            subprocess.run(["git", "commit", "-m", "Add N8N Integration"], check=True)
+            print("Git commit successful.")
+        else:
+            print("No changes to commit.")
+        
+        print("Pushing to space...")
+        subprocess.run(["git", "push", "space", "clean_deploy:main"], check=True)
+        print("✅ Successfully deployed to Hugging Face Space.")
+        
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Deployment failed: {e}")
+
+if __name__ == "__main__":
+    print("Starting N8N Integration Setup...")
+    update_requirements()
+    update_main()
+    deploy()
+    print("✅ connect_n8n.py completed.")
