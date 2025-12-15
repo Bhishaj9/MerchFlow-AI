@@ -1,53 +1,60 @@
-import google.generativeai as genai
 import os
 import json
+import asyncio
+import google.generativeai as genai
+from PIL import Image
 from dotenv import load_dotenv
 
 load_dotenv()
 
 class VisualAnalyst:
     def __init__(self):
-        self.api_key = os.getenv("GEMINI_API_KEY")
-        if not self.api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables")
-        genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-flash-latest')
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            print("⚠️ GEMINI_API_KEY missing")
 
-    def analyze_image(self, image_bytes):
-        prompt = (
-            "Analyze this product image for an e-commerce listing. "
-            "detailed visual attributes including: Main Color, Material/Texture, Style/Vibe, "
-            "and 3 distinct Visual Features. Return the result strictly as a JSON object."
-        )
+        genai.configure(api_key=api_key)
+        # Use the modern, faster Flash model
+        self.model = genai.GenerativeModel('gemini-1.5-flash')
 
+    async def analyze_image(self, image_path: str):
+        print(f"👁️ Analyzing image: {image_path}")
+        
         try:
-            # Gemini supports passing bytes directly if packaged correctly, 
-            # but usually it expects a PIL image or a specific blob format.
-            # The python library often accepts a dictionary for inline data.
-            # let's use the 'parts' construction which is standard.
+            # 1. Load image properly with Pillow (Fixes format issues)
+            img = Image.open(image_path)
             
-            response = self.model.generate_content([
-                {'mime_type': 'image/jpeg', 'data': image_bytes},
-                prompt
-            ])
-
-            text_response = response.text
+            # 2. Define the prompt
+            prompt = """
+            Analyze this product image for an e-commerce listing.
+            Return ONLY a raw JSON object (no markdown formatting) with this structure:
+            {
+                "main_color": "string",
+                "product_type": "string",
+                "design_style": "string (minimalist, streetwear, vintage, etc)",
+                "visual_features": ["list", "of", "visible", "features"],
+                "suggested_title": "creative product title",
+                "condition_guess": "new/used"
+            }
+            """
             
-            # Clean up markdown code blocks if present
-            if text_response.startswith('```json'):
-                text_response = text_response[7:]
-            if text_response.startswith('```'):
-                text_response = text_response[3:]
-            if text_response.endswith('```'):
-                text_response = text_response[:-3]
-                
-            return json.loads(text_response.strip())
-
+            # 3. Run in a thread to prevent blocking (Sync to Async wrapper)
+            response = await asyncio.to_thread(
+                self.model.generate_content,
+                [prompt, img]
+            )
+            
+            # 4. Clean and Parse JSON
+            text_response = response.text.replace('```json', '').replace('```', '').strip()
+            return json.loads(text_response)
         except Exception as e:
-            print(f"⚠️ API Quota Hit. Switching to Simulation Mode. (Error: {e})")
+            print(f"❌ Vision Error: {e}")
+            # Return a Safe Fallback (Simulation)
             return {
-                "color": "Midnight Blue",
-                "material": "Synthetic Leather",
-                "vibe": "Modern Minimalist",
-                "features": ["White rubber sole", "Perforated texture", "Low-top silhouette"]
+                "main_color": "Unknown",
+                "product_type": "Unidentified Item",
+                "design_style": "Standard",
+                "visual_features": ["Error analyzing image"],
+                "suggested_title": "Manual Review Needed",
+                "condition_guess": "New"
             }
