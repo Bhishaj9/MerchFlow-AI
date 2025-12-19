@@ -17,19 +17,20 @@ class VisualAnalyst:
         # --- SMART MODEL SELECTION ---
         print("🔍 Checking available Gemini models for this key...")
         try:
+            # Filter for models that support content generation
             my_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
             print(f"📋 Available Models: {my_models}")
             
-            # Priority list (Newest -> Oldest)
+            # UPDATED PRIORITY: Specific versions FIRST
             preferred_order = [
-                'models/gemini-1.5-flash',
-                'models/gemini-1.5-flash-001',
-                'models/gemini-1.5-pro',
+                'models/gemini-1.5-flash-001',  # <--- Specific version (Safest)
+                'models/gemini-1.5-flash',      # Alias (Fallback)
                 'models/gemini-1.5-pro-001',
-                'models/gemini-pro-vision'  # Legacy fallback
+                'models/gemini-1.5-pro',
+                'models/gemini-pro-vision'
             ]
             
-            selected_model = "models/gemini-1.5-flash" # Default
+            selected_model = "models/gemini-1.5-flash-001" # Default safety
             
             for model_name in preferred_order:
                 if model_name in my_models:
@@ -40,8 +41,8 @@ class VisualAnalyst:
             self.model = genai.GenerativeModel(selected_model)
             
         except Exception as e:
-            print(f"⚠️ Model list failed ({e}), defaulting to gemini-1.5-flash")
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
+            print(f"⚠️ Model list failed ({e}), defaulting to gemini-1.5-flash-001")
+            self.model = genai.GenerativeModel('gemini-1.5-flash-001')
 
     async def analyze_image(self, image_path: str):
         # Adaptation: Read file path to bytes, as main.py passes a path
