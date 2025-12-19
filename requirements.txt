@@ -1,7 +1,13 @@
 fastapi
 uvicorn
+python-multipart
+langchain
+langchain-community
+langchain-google-genai
+langchain-groq
+pinecone>=3.0.0
+pydantic
 python-dotenv
-httpx
+google-generativeai
+groq
 Pillow
-google-generativeai>=0.8.3
-pinecone
