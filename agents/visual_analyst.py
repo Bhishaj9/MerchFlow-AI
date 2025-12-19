@@ -10,10 +10,10 @@ class VisualAnalyst:
     def __init__(self):
         self.api_key = os.getenv("GEMINI_API_KEY")
         if not self.api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables")
+            raise ValueError("GEMINI_API_KEY not found")
         genai.configure(api_key=self.api_key)
-        # UPDATED: Using the stable model version
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        # UPDATED: Using specific version ID to avoid 404s
+        self.model = genai.GenerativeModel('gemini-1.5-flash-001')
 
     async def analyze_image(self, image_path: str):
         # Read file as bytes to match the user's logic requirements
@@ -30,9 +30,7 @@ class VisualAnalyst:
 
         prompt = (
             "Analyze this product image for an e-commerce listing. "
-            "detailed visual attributes including: Main Color, Material/Texture, Style/Vibe, "
-            "and 3 distinct Visual Features. Return the result strictly as a JSON object "
-            "with keys: main_color, product_type, design_style, visual_features."
+            "Return a JSON object with keys: main_color, product_type, design_style, visual_features."
         )
         
         try:
@@ -45,23 +43,14 @@ class VisualAnalyst:
                 ]
             )
             
-            text_response = response.text
+            text = response.text
+            # Clean markdown
+            if text.startswith('```json'): text = text[7:]
+            if text.endswith('```'): text = text[:-3]
             
-            # Clean up markdown code blocks if present
-            if text_response.startswith('```json'):
-                text_response = text_response[7:]
-            if text_response.startswith('```'):
-                text_response = text_response[3:]
-            if text_response.endswith('```'):
-                text_response = text_response[:-3]
-                
-            return json.loads(text_response.strip())
+            return json.loads(text.strip())
         except Exception as e:
-            print(f"⚠️ API Error: {e}")
-            # Return a clearer error for debugging
             return {
                 "main_color": "Unknown",
-                "product_type": "Unidentified Item",
-                "design_style": "Standard",
                 "visual_features": [f"Error: {str(e)}"]
             }
