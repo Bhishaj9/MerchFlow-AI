@@ -16,7 +16,7 @@ class VisualAnalyst:
         self.model = genai.GenerativeModel(self.model_name)
         print(f"✅ VisualAnalyst stored Gemini model: {self.model_name}")
 
-    def analyze_image(self, image_path: str):
+    async def analyze_image(self, image_path: str):
         try:
             # Upload the file to Gemini
             # Note: For efficiency in production, files should be managed (uploads/deletes)
