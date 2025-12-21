@@ -5,9 +5,10 @@ langchain
 langchain-community
 langchain-google-genai
 langchain-groq
-pinecone
+pinecone>=3.0.0
 pydantic
 python-dotenv
-google-generativeai
+google-generativeai>=0.8.3
 groq
 Pillow
+huggingface_hub

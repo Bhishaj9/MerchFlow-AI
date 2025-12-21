@@ -1,66 +1,73 @@
+---
+title: MerchFlow AI
+emoji: 👟
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # MerchFlow AI
 
-> An autonomous multi-agent system that generates SEO-optimized e-commerce listings from product images.
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/Made%20with-Python-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white)
-![Llama 3](https://img.shields.io/badge/Llama%203-0467DF?style=for-the-badge&logo=meta&logoColor=white)
-![Pinecone](https://img.shields.io/badge/Pinecone-000000?style=for-the-badge&logo=pinecone&logoColor=white)
+MerchFlow AI is a high-performance, multi-agent orchestration system designed to automate the generation of premium e-commerce product listings. By synergizing Computer Vision, Retrieval Augmented Generation (RAG), and Large Language Models (LLMs), it transforms raw product images into SEO-optimized market-ready content.
 
-## The Architecture 🏗️
+## 🏗️ Architecture Flow
 
-MerchFlow AI utilizes a sophisticated multi-agent workflow to transform static product images into high-converting sales listings:
+The system employs a sophisticated event-driven architecture orchestrated by **FastAPI**:
 
-*   **👀 Visual Analyst**: Leverages **Gemini 1.5 Pro** to analyze product images, identifying key features, styles, and aesthetic nuances.
-*   **🧠 Memory Agent**: Consults a **Pinecone Vector DB** to retrieve high-performing SEO keywords and market trends relevant to the visual analysis.
-*   **✍️ Writer Agent**: Utilizes **Llama 3** (via Groq) to synthesize visual data and market insights into compelling, SEO-optimized sales copy.
+1.  **👁️ Visual Agent (Gemini 1.5)**
+    *   **Function**: Zero-shot image analysis.
+    *   **Process**: Extracts high-fidelity visual attributes including dominant color palettes, stylistic classifications, and granular item types.
+    *   **Engine**: Google Gemini 1.5 Flash (Vision).
 
-## Tech Stack 💻
+2.  **🧠 Memory Agent (Pinecone)**
+    *   **Function**: Semantic Search & RAG.
+    *   **Process**: Vectorizes visual tags to query a high-dimensional index, retrieving historically high-performing SEO keywords and market trends relevant to the product.
+    *   **Engine**: Pinecone Vector Database.
 
-*   **Backend Framework**: FastAPI
-*   **Styling**: Tailwind CSS
-*   **Language**: Python
-*   **Containerization**: Docker
-*   **AI/ML**: Google Gemini, Meta Llama 3, Pinecone
+3.  **✍️ Writer Agent (Llama 3)**
+    *   **Function**: Creative Synthesis.
+    *   **Process**: Fuses visual data with retrieved market intelligence to generate persuasive, conversion-focused title, description, and feature bullets.
+    *   **Engine**: Meta Llama 3 (via Groq Cloud).
 
-## Installation & Setup 🛠️
+4.  **⚙️ Orchestrator (FastAPI)**
+    *   **Function**: Async Pipeline Management.
+    *   **Process**: Handles non-blocking agent execution, error propagation, and API lifecycle management.
 
-Clone the repository to your local machine:
+5.  **🔗 Post-Processing (n8n)**
+    *   **Function**: Automation Webhook.
+    *   **Process**: Triggers downstream workflows (database storage, Shopify API integration) via secure webhooks upon successful generation.
 
-```bash
-git clone https://github.com/your-username/merchflow-ai.git
-cd merchflow-ai
+## 🚀 Complete Setup
+
+To run this system locally, ensure you have the following environment variables configured in your `.env` file:
+
+```env
+GEMINI_API_KEY=your_gemini_key
+GROQ_API_KEY=your_groq_key
+PINECONE_API_KEY=your_pinecone_key
+N8N_WEBHOOK_URL=your_n8n_webhook_url
 ```
 
-Install the required dependencies:
+## ⚡ Quick Start
+
+### 1. Installation
+Install the required dependencies using pip:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Configuration ⚙️
-
-Create a `.env` file in the root directory and add your API keys:
-
-```ini
-GROQ_API_KEY=your_groq_api_key
-PINECONE_API_KEY=your_pinecone_api_key
-GOOGLE_API_KEY=your_google_api_key
-```
-
-## Run 🚀
-
-Launch the efficient multi-agent system:
+### 2. Execution
+Launch the FastAPI server:
 
 ```bash
-python launcher.py
+python main.py
 ```
 
-## Demo 📸
-
-![App Screenshot](screen.jpg)
-
-## License 📄
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The API will be available at `http://localhost:7860`.

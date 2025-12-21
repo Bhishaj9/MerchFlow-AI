@@ -19,3 +19,5 @@ Thumbs.db
 # Editor Directories
 .vscode/
 .idea/
+
+*.jpg

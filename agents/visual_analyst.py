@@ -1,6 +1,6 @@
-import google.generativeai as genai
 import os
 import json
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,45 +9,51 @@ class VisualAnalyst:
     def __init__(self):
         self.api_key = os.getenv("GEMINI_API_KEY")
         if not self.api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables")
+            raise ValueError("GEMINI_API_KEY not found")
+        
         genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-flash-latest')
+        self.model_name = "models/gemini-flash-latest"
+        self.model = genai.GenerativeModel(self.model_name)
+        print(f"✅ VisualAnalyst stored Gemini model: {self.model_name}")
 
-    def analyze_image(self, image_bytes):
-        prompt = (
-            "Analyze this product image for an e-commerce listing. "
-            "detailed visual attributes including: Main Color, Material/Texture, Style/Vibe, "
-            "and 3 distinct Visual Features. Return the result strictly as a JSON object."
-        )
-
+    async def analyze_image(self, image_path: str):
         try:
-            # Gemini supports passing bytes directly if packaged correctly, 
-            # but usually it expects a PIL image or a specific blob format.
-            # The python library often accepts a dictionary for inline data.
-            # let's use the 'parts' construction which is standard.
+            # Upload the file to Gemini
+            # Note: For efficiency in production, files should be managed (uploads/deletes)
+            # but for this agentic flow, we'll upload per request or assume local path usage helper if needed.
+            # However, the standard `model.generate_content` can take PIL images or file objects directly for some sdk versions,
+            # but using the File API is cleaner for 1.5 Flash multi-modal.
+            # Let's use the simpler PIL integration if available, or just path if the SDK supports it.
+            # actually, standard genai usage for images usually involves PIL or uploading.
+            # Let's try the PIL approach first as it's often more direct for local scripts.
+            import PIL.Image
+            img = PIL.Image.open(image_path)
             
-            response = self.model.generate_content([
-                {'mime_type': 'image/jpeg', 'data': image_bytes},
-                prompt
-            ])
-
-            text_response = response.text
+            user_prompt = (
+                "Analyze this product image. "
+                "Return ONLY valid JSON with keys: main_color, product_type, design_style, visual_features."
+            )
             
-            # Clean up markdown code blocks if present
-            if text_response.startswith('```json'):
-                text_response = text_response[7:]
-            if text_response.startswith('```'):
-                text_response = text_response[3:]
-            if text_response.endswith('```'):
-                text_response = text_response[:-3]
-                
-            return json.loads(text_response.strip())
+            # Gemini 1.5 Flash supports JSON response schema, but simple prompting often works well too.
+            # We'll stick to prompt engineering for now to match the "Return ONLY valid JSON" instruction.
+            response = self.model.generate_content([user_prompt, img])
+            
+            response_text = response.text
+            
+            # Clean up potential markdown code fences
+            cleaned_content = response_text
+            if "```json" in cleaned_content:
+                cleaned_content = cleaned_content.replace("```json", "").replace("```", "")
+            elif "```" in cleaned_content:
+                 cleaned_content = cleaned_content.replace("```", "")
+            
+            return json.loads(cleaned_content.strip())
 
         except Exception as e:
-            print(f"⚠️ API Quota Hit. Switching to Simulation Mode. (Error: {e})")
+            print(f"❌ Analysis Failed: {e}")
             return {
-                "color": "Midnight Blue",
-                "material": "Synthetic Leather",
-                "vibe": "Modern Minimalist",
-                "features": ["White rubber sole", "Perforated texture", "Low-top silhouette"]
+                "main_color": "Unknown",
+                "product_type": "Unknown", 
+                "design_style": "Unknown",
+                "visual_features": [f"Error: {str(e)}"]
             }
