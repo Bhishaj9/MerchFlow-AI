@@ -28,7 +28,7 @@ class MemoryAgent:
             print(f"Creating index {self.index_name}...")
             self.pc.create_index(
                 name=self.index_name,
-                dimension=768, # models/text-embedding-004 dimension
+                dimension=768, # gemini-embedding-001 output dimension
                 metric='cosine',
                 spec=ServerlessSpec(
                     cloud='aws',
@@ -43,7 +43,7 @@ class MemoryAgent:
         self.index = self.pc.Index(self.index_name)
 
     def _get_embedding(self, text):
-        # Using models/text-embedding-004
+        # Using gemini-embedding-001
         result = self.client.models.embed_content(
             model="gemini-embedding-001",
             contents=text,
