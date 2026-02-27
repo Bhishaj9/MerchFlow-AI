@@ -301,6 +301,20 @@
         const copyBtn = document.getElementById('copyBtn');
         const copyIcon = document.getElementById('copyIcon');
         const downloadBtn = document.getElementById('downloadBtn');
+
+        const browseBtn = document.getElementById('browseBtn');
+        browseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            fileInput.click();
+        });
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                // Provide a visual cue that a file was selected
+                const fileName = fileInput.files[0].name;
+                browseBtn.innerHTML = `<span class="material-symbols-outlined text-xl">check_circle</span> ${fileName}`;
+            }
+        });
+
         let selectedFile = null;
         let isCatalogGenerated = false;
         const defaultDropZoneContent = `
