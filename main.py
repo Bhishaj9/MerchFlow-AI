@@ -58,6 +58,31 @@ async def generate_catalog(file: UploadFile = File(...)):
         query = f"{visual_data.get('main_color', '')} {visual_data.get('product_type', 'product')}"
         seo_keywords = memory_agent.retrieve_keywords(query)
         
+        # 2b. AI Fallback: Generate keywords if Pinecone returns empty
+        if not seo_keywords:
+            print("🤖 Database empty. Using AI Fallback for SEO keywords.")
+            try:
+                fallback_prompt = (
+                    f"The internal keyword database is empty for this product. "
+                    f"Based on these visual features: {json.dumps(visual_data)}, "
+                    f"generate a list of 10 high-converting e-commerce SEO tags "
+                    f"and return them as a JSON array of strings. Return ONLY the JSON array."
+                )
+                fallback_response = visual_agent.client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=fallback_prompt
+                )
+                import re
+                match = re.search(r'\[.*\]', fallback_response.text, re.DOTALL)
+                if match:
+                    seo_keywords = json.loads(match.group(0))
+                else:
+                    seo_keywords = [tag.strip() for tag in fallback_response.text.split(",") if tag.strip()]
+                print(f"✅ AI Fallback generated {len(seo_keywords)} keywords.")
+            except Exception as fallback_err:
+                print(f"⚠️ AI Fallback also failed: {fallback_err}")
+                seo_keywords = []
+        
         print("▶️ Writing Listing...")
         listing = writer_agent.write_listing(visual_data, seo_keywords)
         
