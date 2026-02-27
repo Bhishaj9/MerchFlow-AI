@@ -1,5 +1,4 @@
 import os
-import httpx
 import asyncio
 import json
 import traceback
@@ -69,15 +68,6 @@ async def generate_catalog(file: UploadFile = File(...)):
             "listing": listing
         }
         
-        # 4. Async N8n Trigger (Before Return)
-        # Constraint: "Must happen after agents finish but before returning"
-        n8n_url = os.getenv("N8N_WEBHOOK_URL")
-        if n8n_url:
-            print(f"🚀 Triggering N8N Webhook: {n8n_url}")
-            await trigger_n8n_webhook(n8n_url, final_data)
-        else:
-            print("ℹ️ N8N_WEBHOOK_URL not set, skipping webhook.")
-            
         return JSONResponse(content=final_data)
 
     except Exception as e:
@@ -99,22 +89,6 @@ async def generate_catalog(file: UploadFile = File(...)):
                 os.remove(file_path)
             except Exception as cleanup_error:
                 print(f"⚠️ Cleanup Warning: {cleanup_error}")
-
-async def trigger_n8n_webhook(url: str, data: dict):
-    """
-    Sends data to n8n webhook asynchronously using httpx.
-    """
-    async with httpx.AsyncClient() as client:
-        try:
-            # We await the post to ensure it's sent before returning, 
-            # fulfilling the user constraint.
-            response = await client.post(url, json=data, timeout=10.0)
-            response.raise_for_status()
-            print(f"✅ N8N Webhook Success: {response.status_code}")
-        except httpx.HTTPStatusError as e:
-             print(f"❌ N8N Webhook HTTP Error: {e.response.status_code} - {e.response.text}")
-        except Exception as e:
-            print(f"❌ N8N Webhook Connection Failed: {e}")
 
 if __name__ == "__main__":
     import uvicorn
