@@ -1,0 +1,757 @@
+{
+  "projects": [
+    {
+      "createTime": "2026-02-25T18:25:28.653824Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#7f0df2",
+        "font": "INTER",
+        "roundness": "ROUND_EIGHT",
+        "saturation": 2
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/13453765122851154258",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 600,
+          "id": "3a95b353-57ca-4c29-a0e0-ad8398fe3db3",
+          "sourceScreen": "projects/13453765122851154258/screens/15822672384834121564",
+          "type": "SCREEN_INSTANCE",
+          "width": 600
+        },
+        {
+          "height": 1024,
+          "hidden": true,
+          "id": "8bc0a17301cb44cf9a3905542e09db2b",
+          "sourceScreen": "projects/13453765122851154258/screens/8bc0a17301cb44cf9a3905542e09db2b",
+          "width": 1280,
+          "x": 753,
+          "y": -163
+        },
+        {
+          "height": 1024,
+          "hidden": true,
+          "id": "90bae99f55b046049c55926a7da7d787",
+          "sourceScreen": "projects/13453765122851154258/screens/90bae99f55b046049c55926a7da7d787",
+          "width": 1280,
+          "x": 804,
+          "y": -332
+        },
+        {
+          "height": 1024,
+          "hidden": true,
+          "id": "bf36d828ed3846cbb6b81f2b44d7e42d",
+          "sourceScreen": "projects/13453765122851154258/screens/bf36d828ed3846cbb6b81f2b44d7e42d",
+          "width": 1280,
+          "x": 664
+        },
+        {
+          "height": 1024,
+          "id": "cf3af7f8a9e74daf85096241ed88c75c",
+          "isFavourite": true,
+          "sourceScreen": "projects/13453765122851154258/screens/cf3af7f8a9e74daf85096241ed88c75c",
+          "width": 1280,
+          "x": 970,
+          "y": -179
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidVwihSF-Kd8W6zf1x913xCGZ7Wc7ZizpmwOg0SARD0a-Q43pMiPyRmB1fnygdmusXnFA8x_YHU_Y9zfRsj8Lp-Unj12g94PnahnjQufHEuMvdhS3JlJZc8dka2Qi3aty3PLeRGvzTgCL9BlN6Nmip5XZrLP6leo9ZKq-hg5iKfKLr7TaKmnN2WSum1VR9MOrqvuWkI2qMMakkvS2NZHKivzUTXVpmCkGNOMZ-2inEisr2GusRBbBrtyChqO",
+        "name": "projects/13453765122851154258/files/a19c43fc67b0469fbc1174a000338555"
+      },
+      "title": "Merchflow AI",
+      "updateTime": "2026-02-25T18:44:08.130497Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2026-02-12T18:28:57.583433Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#c8f906",
+        "font": "INTER",
+        "roundness": "ROUND_FULL",
+        "saturation": 2
+      },
+      "deviceType": "MOBILE",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/14416597482131741463",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 884,
+          "id": "91dd95e95696415196414912a882c7e7",
+          "sourceScreen": "projects/14416597482131741463/screens/91dd95e95696415196414912a882c7e7",
+          "width": 390,
+          "x": 1344
+        },
+        {
+          "height": 884,
+          "id": "b1053b8349ee4e4992f6cfbc92dab3fc",
+          "sourceScreen": "projects/14416597482131741463/screens/b1053b8349ee4e4992f6cfbc92dab3fc",
+          "width": 390
+        },
+        {
+          "height": 1324,
+          "id": "c7aff944733e486d983a63392b7aa65f",
+          "sourceScreen": "projects/14416597482131741463/screens/c7aff944733e486d983a63392b7aa65f",
+          "width": 390,
+          "x": 2252
+        },
+        {
+          "height": 2060,
+          "id": "d2e32096f621489fb0d0a4195928f9f4",
+          "sourceScreen": "projects/14416597482131741463/screens/d2e32096f621489fb0d0a4195928f9f4",
+          "width": 390,
+          "x": 1798
+        },
+        {
+          "height": 2035,
+          "hidden": true,
+          "id": "ec37f6f67858486198bf9eae665c2825",
+          "sourceScreen": "projects/14416597482131741463/screens/ec37f6f67858486198bf9eae665c2825",
+          "width": 390,
+          "y": 1942
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidVZhkC2L9hEo0egk8Y_EN0jF1M1U_xsJU_XBzPtnGnWIxWpCq0qqZvyYEh8cnRo8KB3IQpPkjX2vqxsBWcBm4TOzSaPJgGjK5LFat9ngLGaoMcZLSiUOc3TdC9Rbovm408BEpUWbIl3RASEla-WXi40EJv-ELimBTkuluXvPUwhL99y4Rub1UkfFpxudinWZedCzJ44QJD8VfUKzC-OW_zruNv7L4wxLhzfysunADtKIvfKkJ7-5uEceBY",
+        "name": "projects/14416597482131741463/files/1dcb6251d53346438730e8fe145924d2"
+      },
+      "title": "House of Nutrition Landing Page",
+      "updateTime": "2026-02-12T18:40:45.529842Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2026-02-09T17:36:41.806831Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#2b2bee",
+        "font": "BE_VIETNAM_PRO",
+        "roundness": "ROUND_EIGHT",
+        "saturation": 3
+      },
+      "deviceType": "MOBILE",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/14876616641695088904",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 884,
+          "id": "0403e315651948b28aafcfa4b3b0032c",
+          "sourceScreen": "projects/14876616641695088904/screens/0403e315651948b28aafcfa4b3b0032c",
+          "width": 390,
+          "y": 13089
+        },
+        {
+          "height": 884,
+          "id": "04cd0b2f4ce442d5affc2f5b75b26de3",
+          "sourceScreen": "projects/14876616641695088904/screens/04cd0b2f4ce442d5affc2f5b75b26de3",
+          "width": 390,
+          "x": 454,
+          "y": 13089
+        },
+        {
+          "height": 884,
+          "id": "0e70c9d66ddf489d8365c61004cca425",
+          "sourceScreen": "projects/14876616641695088904/screens/0e70c9d66ddf489d8365c61004cca425",
+          "width": 390,
+          "y": 19717
+        },
+        {
+          "height": 1099,
+          "id": "1336736c68fd4de09836d79018745afd",
+          "sourceScreen": "projects/14876616641695088904/screens/1336736c68fd4de09836d79018745afd",
+          "width": 390,
+          "y": 15417
+        },
+        {
+          "height": 1103,
+          "id": "1f8518adcc3542efa40b9d7d78681cc4",
+          "sourceScreen": "projects/14876616641695088904/screens/1f8518adcc3542efa40b9d7d78681cc4",
+          "width": 390,
+          "y": 9443
+        },
+        {
+          "height": 884,
+          "id": "24b25983e21f4042a6f42c0eab391114",
+          "sourceScreen": "projects/14876616641695088904/screens/24b25983e21f4042a6f42c0eab391114",
+          "width": 390,
+          "y": 24500
+        },
+        {
+          "height": 884,
+          "id": "2c61cd9c59ed44ceb646fc27e1d6348d",
+          "sourceScreen": "projects/14876616641695088904/screens/2c61cd9c59ed44ceb646fc27e1d6348d",
+          "width": 390,
+          "y": 5189
+        },
+        {
+          "height": 1048,
+          "id": "2d60fa1bc18a4ce7abb89d22a5afc3e6",
+          "sourceScreen": "projects/14876616641695088904/screens/2d60fa1bc18a4ce7abb89d22a5afc3e6",
+          "width": 390,
+          "y": 8139
+        },
+        {
+          "height": 1554,
+          "id": "30d3b1682ceb48aab8c017a887aa33d2",
+          "sourceScreen": "projects/14876616641695088904/screens/30d3b1682ceb48aab8c017a887aa33d2",
+          "width": 390,
+          "y": 6329
+        },
+        {
+          "height": 884,
+          "id": "5524c3f2f11b4e19974c68de88ff0501",
+          "sourceScreen": "projects/14876616641695088904/screens/5524c3f2f11b4e19974c68de88ff0501",
+          "width": 390,
+          "y": 4049
+        },
+        {
+          "height": 803,
+          "id": "5fff4884df894eb599d07ee74e8413e7",
+          "sourceScreen": "projects/14876616641695088904/screens/5fff4884df894eb599d07ee74e8413e7",
+          "width": 390,
+          "x": 908,
+          "y": 14229
+        },
+        {
+          "height": 1266,
+          "id": "6ae63c719a77450b83d1bd87b642ecfb",
+          "sourceScreen": "projects/14876616641695088904/screens/6ae63c719a77450b83d1bd87b642ecfb",
+          "width": 390,
+          "y": 16772
+        },
+        {
+          "height": 799,
+          "id": "866e1584496f45dc905ea6a347de4da4",
+          "sourceScreen": "projects/14876616641695088904/screens/866e1584496f45dc905ea6a347de4da4",
+          "width": 390,
+          "x": 454,
+          "y": 28270
+        },
+        {
+          "height": 891,
+          "id": "a664c737e8f546e182c07489ea60edf3",
+          "sourceScreen": "projects/14876616641695088904/screens/a664c737e8f546e182c07489ea60edf3",
+          "width": 390,
+          "y": 11942
+        },
+        {
+          "height": 1144,
+          "id": "aa56e4e88beb4f63b9d9a6634788ede6",
+          "sourceScreen": "projects/14876616641695088904/screens/aa56e4e88beb4f63b9d9a6634788ede6",
+          "width": 390,
+          "y": 2649
+        },
+        {
+          "height": 723,
+          "id": "ae015ad1ae8445da9293c6ca546ed92d",
+          "sourceScreen": "projects/14876616641695088904/screens/ae015ad1ae8445da9293c6ca546ed92d",
+          "width": 390,
+          "x": 454,
+          "y": 24500
+        },
+        {
+          "height": 1133,
+          "id": "b0132faa7cfb474193b3a035e4143d0d",
+          "sourceScreen": "projects/14876616641695088904/screens/b0132faa7cfb474193b3a035e4143d0d",
+          "width": 390,
+          "y": 23111
+        },
+        {
+          "height": 884,
+          "id": "b358d7f040d04d6180133f56b6914adc",
+          "sourceScreen": "projects/14876616641695088904/screens/b358d7f040d04d6180133f56b6914adc",
+          "width": 390,
+          "y": 25640
+        },
+        {
+          "height": 1998,
+          "id": "b66bbd8e89c043bd9d2c107c3e2c4ce8",
+          "sourceScreen": "projects/14876616641695088904/screens/b66bbd8e89c043bd9d2c107c3e2c4ce8",
+          "width": 390,
+          "y": 20857
+        },
+        {
+          "height": 1167,
+          "id": "bb10a997745c466585024c58ca800275",
+          "sourceScreen": "projects/14876616641695088904/screens/bb10a997745c466585024c58ca800275",
+          "width": 390,
+          "y": 18294
+        },
+        {
+          "height": 1234,
+          "id": "c14aacd0bd5e4d1c86ddf6af3c12a96e",
+          "sourceScreen": "projects/14876616641695088904/screens/c14aacd0bd5e4d1c86ddf6af3c12a96e",
+          "width": 390,
+          "y": 26780
+        },
+        {
+          "height": 1129,
+          "id": "c519daadb8054fed99550cf3e0fde652",
+          "sourceScreen": "projects/14876616641695088904/screens/c519daadb8054fed99550cf3e0fde652",
+          "width": 390,
+          "x": 454,
+          "y": 16772
+        },
+        {
+          "height": 884,
+          "id": "c6f4b4494ffa49b68d34a27b9e864eaf",
+          "sourceScreen": "projects/14876616641695088904/screens/c6f4b4494ffa49b68d34a27b9e864eaf",
+          "width": 390,
+          "y": 10802
+        },
+        {
+          "height": 932,
+          "id": "cb586b03a673475e9b0dfceef53f8ca6",
+          "sourceScreen": "projects/14876616641695088904/screens/cb586b03a673475e9b0dfceef53f8ca6",
+          "width": 390,
+          "x": 454,
+          "y": 14229
+        },
+        {
+          "height": 1253,
+          "id": "cfa8fc268bb54eee9f3daa823a2a335d",
+          "sourceScreen": "projects/14876616641695088904/screens/cfa8fc268bb54eee9f3daa823a2a335d",
+          "width": 390
+        },
+        {
+          "height": 884,
+          "id": "eee54a4b5b1a4380af6efcd7b12e0bd3",
+          "sourceScreen": "projects/14876616641695088904/screens/eee54a4b5b1a4380af6efcd7b12e0bd3",
+          "width": 390,
+          "y": 28270
+        },
+        {
+          "height": 884,
+          "id": "fa2c9f9ac77d4822b3b601c47e9de473",
+          "sourceScreen": "projects/14876616641695088904/screens/fa2c9f9ac77d4822b3b601c47e9de473",
+          "width": 390,
+          "y": 1509
+        },
+        {
+          "height": 884,
+          "id": "fbf09e340a01431bbdcaca34b039e56d",
+          "sourceScreen": "projects/14876616641695088904/screens/fbf09e340a01431bbdcaca34b039e56d",
+          "width": 390,
+          "y": 14229
+        },
+        {
+          "height": 884,
+          "id": "ffe3420c4dd748c8a130dca9d59979b3",
+          "sourceScreen": "projects/14876616641695088904/screens/ffe3420c4dd748c8a130dca9d59979b3",
+          "width": 390,
+          "x": 454,
+          "y": 23111
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidXd4EgEAE0cVviIP02RhFf-S0B_XyA1Hopm5w2-JY9vGBd17mifrmBlHT1oXWwOflFjPXn8DV8KZBqxMaFTTHniHs8RFBdb2ueceRnYGgeVVO3-0G6K40pelUeStYIBxEEf73oukJjvmPHaciY9-Dg40ysYFwgl7O9eQa5PrCWoub7X1hOGeLQ5yIJe2AhjWIeUwcDmW5CCFVA_QfCwpHwk78eOBPhfllfYXo18cOacHpBlj0BsB7pStfQ4",
+        "name": "projects/14876616641695088904/files/b1c6390f8db3459e8bd1a5ceaa570f86"
+      },
+      "title": "Aura TV",
+      "updateTime": "2026-02-09T18:54:15.490610Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2026-02-09T15:29:23.414547Z",
+      "designTheme": {},
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/10352760979295925874",
+      "origin": "STITCH",
+      "projectType": "PROJECT_DESIGN",
+      "title": "Draft README.md",
+      "updateTime": "2026-02-09T15:29:23.414547Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2026-02-07T20:10:39.013135Z",
+      "designTheme": {},
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/11474351006747027536",
+      "origin": "STITCH",
+      "projectType": "PROJECT_DESIGN",
+      "title": "Continuity Redis Queue Verification",
+      "updateTime": "2026-02-07T20:10:39.013135Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2026-01-02T21:37:47.732401Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#3713ec",
+        "font": "PLUS_JAKARTA_SANS",
+        "roundness": "ROUND_FULL",
+        "saturation": 2
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/2433657010932190317",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 714,
+          "id": "511f5d39a22641d49e65bf0c79823f82",
+          "sourceScreen": "projects/2433657010932190317/screens/511f5d39a22641d49e65bf0c79823f82",
+          "width": 1280,
+          "x": 7744
+        },
+        {
+          "height": 1024,
+          "id": "546a9408cf774fddb9e46be1b46465e5",
+          "sourceScreen": "projects/2433657010932190317/screens/546a9408cf774fddb9e46be1b46465e5",
+          "width": 1280,
+          "x": 5056
+        },
+        {
+          "height": 731,
+          "id": "a6d97010b7564a6f8051f63cf898316f",
+          "sourceScreen": "projects/2433657010932190317/screens/a6d97010b7564a6f8051f63cf898316f",
+          "width": 1280,
+          "x": 9088
+        },
+        {
+          "height": 714,
+          "id": "b644533eb2084dea937356b40582bd92",
+          "sourceScreen": "projects/2433657010932190317/screens/b644533eb2084dea937356b40582bd92",
+          "width": 1280,
+          "x": 6400
+        },
+        {
+          "height": 714,
+          "id": "c24b6584df4b4fb18457c47b74010a67",
+          "sourceScreen": "projects/2433657010932190317/screens/c24b6584df4b4fb18457c47b74010a67",
+          "width": 1280,
+          "x": 2368
+        },
+        {
+          "height": 714,
+          "id": "c50847373ed345fbbc29795455754fc5",
+          "sourceScreen": "projects/2433657010932190317/screens/c50847373ed345fbbc29795455754fc5",
+          "width": 1280,
+          "x": 3712
+        },
+        {
+          "height": 510,
+          "id": "d368a2a8-b872-478e-9027-950e819788da",
+          "sourceScreen": "projects/2433657010932190317/screens/5596238648239871334",
+          "width": 960
+        },
+        {
+          "height": 714,
+          "id": "fb95def010c2414bb055363bbe15e284",
+          "sourceScreen": "projects/2433657010932190317/screens/fb95def010c2414bb055363bbe15e284",
+          "width": 1280,
+          "x": 1024
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidVylXDx3fy-lDIZCKxu93nj5ccLLXs96fgT-kzQ6e3UaIim6EqtjIbaUB4XZKM3PoNA6qUrYpWMJxvQIwjKVBM-qz3UR3FQJwC9Tl76t2iA4vnyhe9ISV3pCAeNhgjrTaC69PpanG_R6aLFBrpujothPlrBRlv2Hg4yeVcJKJXOBMnTdAtLoADQs_XN6iWmf6nL-aK-ZmvGygXBVAWvZcmwRthfEWidd2-AAtX7VcbOo8neHlGbqJJGcb8",
+        "name": "projects/2433657010932190317/files/f647e84464644998a58c66bd6e5ebcb8"
+      },
+      "title": "Spotify VisionOS Landing Page",
+      "updateTime": "2026-01-02T21:50:58.053355Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-26T13:23:42.313267Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#7f0df2",
+        "font": "SPACE_GROTESK",
+        "roundness": "ROUND_EIGHT",
+        "saturation": 3
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/1557963788365082774",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 1024,
+          "id": "8091fb58aba6426d9e2b71ba9a55c2b5",
+          "sourceScreen": "projects/1557963788365082774/screens/8091fb58aba6426d9e2b71ba9a55c2b5",
+          "width": 1280
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidU6UBSHU6hzJW87gG7gN4j1xOrxZCn7CE6IAT5kIlkT-vEirE-4Tz8ZQRxshEMFYZhuOdDKWTO9Mh5ahuEv-hZbeHdr_QIN-R4TN3uUJu-hdEYUoaazVhGzlE61gSKcX0N2cYh6vMh3N5ZRqhbD3XV3Y9M7aVwYXN9mBxF69C6knKlmG7_c4qWlpMTwYAHPTblffkHs9CEGWJz3sW6VrkIxiSiq5Y_4X8ip8ZPkaa_DgwexB5vnd4Vv2g",
+        "name": "projects/1557963788365082774/files/6296130a1fe1424286a708b8fc4f8836"
+      },
+      "title": "Continuity Dashboard",
+      "updateTime": "2025-12-26T13:25:55.556755Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-13T21:24:48.432473Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#2bee79",
+        "font": "SPLINE_SANS",
+        "roundness": "ROUND_FULL",
+        "saturation": 3
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/15558297327625973075",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 1024,
+          "id": "bca4b7407c584037a859d6c46fe65e5f",
+          "sourceScreen": "projects/15558297327625973075/screens/bca4b7407c584037a859d6c46fe65e5f",
+          "width": 1280,
+          "y": 1280
+        },
+        {
+          "height": 1024,
+          "id": "dbca4b45d36c4ef2a026817001ad8956",
+          "sourceScreen": "projects/15558297327625973075/screens/dbca4b45d36c4ef2a026817001ad8956",
+          "width": 1280
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidW8yfO5Sx9it1kpgHKj53Z7KlwcijvHU8ZB6yBXvp0GZthaVZG_0kRrvpVtXeFbQDH5vuw6eXaSEDYMrAIETHa2buKF6qXwSGIF6-6fantnZFQqsHrqge07zrapQmalOMukZNtyyoiJfihsr0NzZc0XUkDo5Ez_UyheSzPkJA5_G78cfvDD_telmYCe0iLmm-sSD_eklDtSGnag23a1_k6Eoc7l8F-10W6G5aEV8aojJUQiwg0NDkV0g2Fc",
+        "name": "projects/15558297327625973075/files/d90f04b5d3ba49ff80dce85cbc68fe13"
+      },
+      "title": "MerchFlow AI Dashboard",
+      "updateTime": "2025-12-13T21:30:52.096705Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-11T21:10:34.814568Z",
+      "designTheme": {
+        "colorMode": "LIGHT",
+        "customColor": "#f9f506",
+        "font": "SPLINE_SANS",
+        "roundness": "ROUND_FULL",
+        "saturation": 2
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/9539484857893441782",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 2887,
+          "id": "0107bc28f352430483e118170bb1fdbb",
+          "sourceScreen": "projects/9539484857893441782/screens/0107bc28f352430483e118170bb1fdbb",
+          "width": 1280,
+          "y": 3331
+        },
+        {
+          "height": 2887,
+          "id": "039d814e16994b74b269ec56cd4e571f",
+          "sourceScreen": "projects/9539484857893441782/screens/039d814e16994b74b269ec56cd4e571f",
+          "width": 1280,
+          "y": 6474
+        },
+        {
+          "height": 3075,
+          "id": "1b5d204b0c6d408fb59acbfa745782dd",
+          "sourceScreen": "projects/9539484857893441782/screens/1b5d204b0c6d408fb59acbfa745782dd",
+          "width": 1280,
+          "x": 2688
+        },
+        {
+          "height": 2434,
+          "id": "30bfd58fb84749c7aa2e643b3b32013c",
+          "sourceScreen": "projects/9539484857893441782/screens/30bfd58fb84749c7aa2e643b3b32013c",
+          "width": 1280,
+          "y": 9617
+        },
+        {
+          "height": 3034,
+          "id": "32031fbc83ec4f13a144b780ccfd4374",
+          "sourceScreen": "projects/9539484857893441782/screens/32031fbc83ec4f13a144b780ccfd4374",
+          "width": 1280,
+          "x": 1344
+        },
+        {
+          "height": 2772,
+          "id": "888eeb71e56745959b7f7d95e411f175",
+          "sourceScreen": "projects/9539484857893441782/screens/888eeb71e56745959b7f7d95e411f175",
+          "width": 1280,
+          "x": 4353,
+          "y": 151
+        },
+        {
+          "height": 1024,
+          "id": "f1b415128c2e451cabfa94246817abb3",
+          "sourceScreen": "projects/9539484857893441782/screens/f1b415128c2e451cabfa94246817abb3",
+          "width": 1280
+        },
+        {
+          "height": 1292,
+          "id": "f8e7509c68df4006b3350d7a1d0b3899",
+          "sourceScreen": "projects/9539484857893441782/screens/f8e7509c68df4006b3350d7a1d0b3899",
+          "width": 1280,
+          "x": 1344,
+          "y": 9617
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidV5UaPSUaP8unPgPTcp447dfmaH3IDeirvDPCWBgzsEVODUniUTEwJu6xRDRRK1dN_FM_6LzQamfaM3nnkrHv4zMnOVMZgRZjKYX_u1IfQNSX0NuAor5dMK-SYTYDI9eDV5PJYqcAg5Qav4mVGtubHGCistED_aWALdKDJxzWyrSn3pfRU2T6l-fbOllVyZ2wVkhm-4dgB9rku44eUo0JsPO5jsbDhTS8_hOScMHHv0gHa4SVvS-pmZ05A",
+        "name": "projects/9539484857893441782/files/8f860557e03749bc978f10c7a4f9259d"
+      },
+      "title": "Gaurav Vashistha Portfolio",
+      "updateTime": "2025-12-13T21:23:57.879282Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-11T21:02:53.053473Z",
+      "designTheme": {
+        "colorMode": "LIGHT",
+        "customColor": "#ea2a33",
+        "font": "SPLINE_SANS",
+        "roundness": "ROUND_EIGHT",
+        "saturation": 3
+      },
+      "deviceType": "DESKTOP",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/11685221869984408512",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 1632,
+          "id": "bbeb9fa35d4e48d8aa7b3f375fbbeac1",
+          "sourceScreen": "projects/11685221869984408512/screens/bbeb9fa35d4e48d8aa7b3f375fbbeac1",
+          "width": 1280
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidWh5K15vHTueYgyOGbjNg3hLdJA180DqU9UwOGfsbj7HU7Pe_8dVHf_-_5bK_e7IzTp0bOi-d8H6X6Cq4vDbcRWhszLAK5WbvX5KeFBo4oTGAXxx3em2soPB2DehFsComBwxxsi75qtPvLSsROcWW8f_MUe2sxmd57JQnuDCeEHmsZbTtg0o79TdZIXwh_Xb2aVj2a4rGq4dfJj7fRVWESIZz_8w5Js5rEjGrHo88UmcVD1PLfmWCzGiAMQ",
+        "name": "projects/11685221869984408512/files/2720c714dc0e4a589495246211537a13"
+      },
+      "title": "Developer Portfolio Homepage",
+      "updateTime": "2025-12-11T21:10:30.140593Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-11T21:02:07.188345Z",
+      "designTheme": {},
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/17495328282521709620",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "updateTime": "2025-12-11T21:02:45.517477Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-11T14:29:03.451868Z",
+      "designTheme": {
+        "colorMode": "DARK",
+        "customColor": "#13a4ec",
+        "font": "INTER",
+        "roundness": "ROUND_EIGHT",
+        "saturation": 3
+      },
+      "deviceType": "MOBILE",
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/9585049832339031288",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "screenInstances": [
+        {
+          "height": 698,
+          "id": "06e18302346d42df87a21e05ea98c96f",
+          "sourceScreen": "projects/9585049832339031288/screens/06e18302346d42df87a21e05ea98c96f",
+          "width": 390,
+          "x": 924,
+          "y": 961
+        },
+        {
+          "height": 698,
+          "id": "230d6b07a86d4f56bed3de950577a359",
+          "sourceScreen": "projects/9585049832339031288/screens/230d6b07a86d4f56bed3de950577a359",
+          "width": 390,
+          "x": -271,
+          "y": 947
+        },
+        {
+          "height": 698,
+          "id": "51a0a19b55774b96be22a3c8ecb22a40",
+          "sourceScreen": "projects/9585049832339031288/screens/51a0a19b55774b96be22a3c8ecb22a40",
+          "width": 390,
+          "x": 355,
+          "y": 947
+        },
+        {
+          "height": 698,
+          "id": "bdb86d1013724984bbcdd822b74d3943",
+          "sourceScreen": "projects/9585049832339031288/screens/bdb86d1013724984bbcdd822b74d3943",
+          "width": 390,
+          "x": -844,
+          "y": 947
+        },
+        {
+          "height": 698,
+          "id": "bfefda73ab734db889fb3cfe9d455630",
+          "sourceScreen": "projects/9585049832339031288/screens/bfefda73ab734db889fb3cfe9d455630",
+          "width": 390,
+          "y": 1915
+        },
+        {
+          "height": 698,
+          "id": "f239458ea0d64d6d80b331000f1bac19",
+          "sourceScreen": "projects/9585049832339031288/screens/f239458ea0d64d6d80b331000f1bac19",
+          "width": 390,
+          "y": 2869
+        }
+      ],
+      "thumbnailScreenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AOfcidUbDNfVurrrfK5SFAKM_HpbQ5N5xodP1S6ZRCUTsgGcspBgrCa6u1R1dDLtInnQdGoVEbM7VYcNwlzmgUHrgNIfl_6kjp3WDJeUmDEJuXmeHyOiIPKJhZQT5Tag-cSlBRAxff8eEGB-nspuG-tGBksYNhV1B_rEDYHWwa9xGAxFS1ITEf3K7bqBoLanqV4h85Len4LRl_k9vWFynfE59-ieQ39nC2uZ5yhsz9Zktxjtvp234ZDjP7NB9H0",
+        "name": "projects/9585049832339031288/files/c4d1e82e07624ccea55021a120af9cd4"
+      },
+      "title": "Send Files Screen",
+      "updateTime": "2025-12-11T14:39:48.965873Z",
+      "visibility": "PRIVATE"
+    },
+    {
+      "createTime": "2025-12-11T14:28:27.026859Z",
+      "designTheme": {},
+      "metadata": {
+        "userRole": "OWNER"
+      },
+      "name": "projects/15763750653304082652",
+      "origin": "STITCH",
+      "projectType": "TEXT_TO_UI_PRO",
+      "updateTime": "2025-12-11T14:28:55.770282Z",
+      "visibility": "PRIVATE"
+    }
+  ]
+}

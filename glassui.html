@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MerchFlow AI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f59e0b",
+                        "primary-hover": "#d97706",
+                        "glass-border": "rgba(255, 255, 255, 0.12)",
+                        "glass-surface": "rgba(255, 255, 255, 0.03)",
+                        "glass-surface-hover": "rgba(255, 255, 255, 0.07)",
+                        "charcoal": "#0a0a0a",
+                        "amber-accent": "#fbbf24"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "mono": ["monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "3rem", "full": "9999px" },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    screens: {
+                        'xs': '480px',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 3s infinite',
+                        'glow-pulse': 'glow-pulse 3s infinite',
+                        'copy-success': 'copy-success 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.02)' },
+                        },
+                        'glow-pulse': {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(245, 158, 11, 0.4)' },
+                            '50%': { boxShadow: '0 0 20px 5px rgba(251, 191, 36, 0.5)' },
+                        },
+                        'copy-success': {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 99px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(20, 20, 20, 1) 0, transparent 50%), 
+                radial-gradient(at 50% -10%, rgba(217, 119, 6, 0.15) 0, transparent 60%), 
+                radial-gradient(at 100% 0%, rgba(251, 191, 36, 0.1) 0, transparent 50%),
+                radial-gradient(at 80% 80%, rgba(217, 119, 6, 0.12) 0, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        @media (max-width: 768px) {
+            .glass-panel {
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                background: rgba(10, 10, 10, 0.85);
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        @media (hover: hover) {
+            .glass-card:hover {
+                border-color: rgba(251, 191, 36, 0.3);
+                box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+                background: rgba(255, 255, 255, 0.04);
+            }
+        }
+        .neon-textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+        }
+        .neon-textarea:focus {
+            outline: none;
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.25), inset 0 0 5px rgba(245, 158, 11, 0.05);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .copy-active {
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.6) !important;
+            border-color: rgba(251, 191, 36, 0.4) !important;
+            background: rgba(251, 191, 36, 0.1) !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-white antialiased overflow-x-hidden min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+<header class="flex-none z-30 px-4 py-3 lg:px-6 lg:py-4 border-b border-white/5 glass-panel sticky top-0">
+<div class="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 lg:gap-4 flex-1 min-w-0">
+<div class="flex-none flex items-center justify-center size-9 lg:size-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-700 shadow-lg shadow-amber-900/20 text-white">
+<span class="material-symbols-outlined text-xl lg:text-2xl">all_inclusive</span>
+</div>
+<div class="min-w-0">
+<h2 class="text-white text-base lg:text-xl font-bold leading-tight tracking-tight truncate">MerchFlow AI</h2>
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-amber-500 animate-pulse flex-none"></span>
+<span class="text-[10px] text-amber-200/60 font-bold uppercase tracking-wider truncate">Enterprise Edition</span>
+</div>
+</div>
+</div>
+<button class="group relative flex-none flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 lg:h-10 px-4 lg:px-6 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all" id="deployBtn">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined lg:mr-2 text-lg relative z-10">rocket_launch</span>
+<span class="hidden lg:inline truncate text-sm font-bold tracking-wide relative z-10">Deploy</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row relative z-10">
+<div class="fixed top-1/4 -left-20 w-64 h-64 lg:w-96 lg:h-96 bg-amber-900/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+<div class="fixed bottom-1/4 -right-20 w-64 h-64 lg:w-96 lg:h-96 bg-orange-900/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+<div class="flex-none lg:flex-1 flex flex-col lg:border-r border-white/5 p-4 lg:p-8 bg-black/40 lg:overflow-y-auto lg:h-[calc(100vh-73px)] relative z-10">
+<div class="max-w-xl w-full mx-auto flex flex-col gap-4 lg:gap-6 h-full">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-white text-xl lg:text-3xl font-bold tracking-tight">Input Data</h2>
+<span class="bg-white/5 text-amber-200/80 px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-semibold border border-white/10 backdrop-blur-sm">Step 1 of 2</span>
+</div>
+<div class="flex flex-col flex-none">
+<input accept=".jpg,.jpeg,.png,.webp" class="hidden" id="fileInput" type="file"/>
+<div class="group relative flex flex-col items-center justify-center gap-3 lg:gap-4 rounded-2xl lg:rounded-3xl border-2 border-dashed border-white/10 hover:border-amber-500/50 hover:bg-white/5 transition-all cursor-pointer min-h-[200px] lg:min-h-[260px] px-4 py-6 lg:px-6 lg:py-8 glass-card" id="dropZone">
+<div class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
+<div class="size-14 lg:size-16 relative z-10 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
+</div>
+<div class="flex flex-col items-center gap-1 relative z-10">
+<p class="text-white text-base lg:text-lg font-bold leading-tight tracking-tight text-center">Drop Product Image Here</p>
+<p class="text-neutral-500 text-xs lg:text-sm font-medium text-center">Supports JPG, PNG, WEBP</p>
+</div>
+<button class="mt-2 relative z-10 flex items-center justify-center rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] lg:text-xs font-bold transition-all uppercase tracking-wide" id="browseBtn">
+                            Browse Files
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-2 lg:gap-3 flex-1">
+<label class="flex items-center justify-between px-1">
+<span class="text-white text-sm lg:text-base font-semibold">Raw Product Specs</span>
+<span class="text-[10px] lg:text-xs text-neutral-500 font-medium bg-black/40 px-2 py-0.5 rounded border border-white/5">JSON or Plain Text</span>
+</label>
+<div class="relative w-full">
+<textarea class="form-input w-full min-h-[140px] lg:h-full lg:min-h-[180px] resize-y lg:resize-none rounded-xl lg:rounded-2xl text-neutral-100 placeholder:text-neutral-600 neon-textarea p-4 lg:p-5 text-sm leading-relaxed font-mono shadow-inner transition-all duration-300" id="productSpecs" placeholder="// Enter fabric details, dimensions, and SKU..."></textarea>
+</div>
+</div>
+<div class="pt-2 pb-6 lg:pb-0">
+<button class="group relative w-full cursor-pointer overflow-hidden rounded-xl lg:rounded-2xl h-12 lg:h-14 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 transition-all border border-white/10 animate-pulse-slow animate-glow-pulse" id="startBtn">
+<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10">
+<span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span>
+<span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="flex-none lg:flex-1 flex flex-col p-4 lg:p-8 bg-black/60 lg:overflow-y-auto lg:h-[calc(100vh-73px)] relative">
+<div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="max-w-3xl w-full mx-auto flex flex-col gap-4 lg:gap-6 h-full relative z-10 pb-8 lg:pb-0">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-white text-xl lg:text-3xl font-bold tracking-tight">Generated Output</h2>
+<div class="flex items-center gap-2">
+<span class="hidden xs:inline-block bg-white/5 text-amber-200 px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-semibold border border-white/10 backdrop-blur-sm">Step 2 of 2</span>
+<div class="hidden xs:block h-6 w-px bg-white/10 mx-1"></div>
+<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-all duration-300 border border-transparent" id="copyBtn" title="Copy JSON">
+<span class="material-symbols-outlined text-lg lg:text-xl transition-all duration-300" id="copyIcon">content_copy</span>
+</button>
+<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-colors" id="downloadBtn" title="Download JSON">
+<span class="material-symbols-outlined text-lg lg:text-xl">download</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 xs:grid-cols-3 gap-3">
+<div class="flex items-center gap-3 p-3 lg:p-4 rounded-xl glass-card cursor-default group">
+<div class="relative size-3 flex-none">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full size-3 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"></span>
+</div>
+<div class="flex flex-col overflow-hidden min-w-0">
+<span class="text-[9px] lg:text-[10px] uppercase tracking-wider text-neutral-500 truncate group-hover:text-amber-300 transition-colors">Vision Agent</span>
+<span class="text-xs lg:text-sm font-bold text-white truncate">Gemini Pro 1.5</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 lg:p-4 rounded-xl glass-card cursor-default group">
+<div class="relative size-3 flex-none">
+<span class="relative inline-flex rounded-full size-3 bg-amber-600 shadow-[0_0_10px_rgba(217,119,6,0.5)]"></span>
+</div>
+<div class="flex flex-col overflow-hidden min-w-0">
+<span class="text-[9px] lg:text-[10px] uppercase tracking-wider text-neutral-500 truncate group-hover:text-amber-300 transition-colors">Reasoning Agent</span>
+<span class="text-xs lg:text-sm font-bold text-white truncate">Llama 3 70B</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 lg:p-4 rounded-xl glass-card cursor-default group">
+<div class="relative size-3 flex-none">
+<span class="relative inline-flex rounded-full size-3 bg-neutral-600 shadow-[0_0_10px_rgba(82,82,82,0.5)]"></span>
+</div>
+<div class="flex flex-col overflow-hidden min-w-0">
+<span class="text-[9px] lg:text-[10px] uppercase tracking-wider text-neutral-500 truncate group-hover:text-amber-300 transition-colors">SEO Context</span>
+<span class="text-xs lg:text-sm font-bold text-white truncate">Pinecone DB</span>
+</div>
+</div>
+</div>
+<div class="flex-none lg:flex-1 min-h-[400px] lg:min-h-0 rounded-xl lg:rounded-2xl bg-black/60 backdrop-blur-xl border border-white/5 flex flex-col overflow-hidden shadow-2xl relative glass-card group/output transition-all duration-500">
+<div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="flex items-center justify-between px-3 py-2.5 lg:px-4 lg:py-3 bg-white/5 border-b border-white/5">
+<span class="text-[10px] lg:text-xs font-mono text-neutral-500 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs lg:text-sm">code</span>
+                            output.json
+                        </span>
+<div class="flex gap-1.5">
+<div class="size-2.5 lg:size-3 rounded-full bg-neutral-800 border border-white/10"></div>
+<div class="size-2.5 lg:size-3 rounded-full bg-neutral-800 border border-white/10"></div>
+<div class="size-2.5 lg:size-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+</div>
+</div>
+<div class="flex-1 p-4 lg:p-5 overflow-auto custom-scrollbar font-mono text-xs lg:text-sm leading-6 lg:leading-7">
+<pre><code class="language-json block" id="jsonOutput"><span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">01</span><span class="text-amber-400">{</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">02</span>  <span class="text-amber-600">"product_analysis"</span><span class="text-neutral-400">:</span> <span class="text-amber-400">{</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">03</span>    <span class="text-amber-600">"title"</span><span class="text-neutral-400">:</span> <span class="text-amber-200">"Noir Elite Series Artisan Timepiece"</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">04</span>    <span class="text-amber-600">"category"</span><span class="text-neutral-400">:</span> <span class="text-amber-200">"Luxury / Accessories"</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">05</span>    <span class="text-amber-600">"features"</span><span class="text-neutral-400">:</span> <span class="text-amber-400">[</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">06</span>      <span class="text-amber-200">"Obsidian Finish"</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">07</span>      <span class="text-amber-200">"Golden Accents"</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">08</span>      <span class="text-amber-200">"Smart Haptic Interface"</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">09</span>    <span class="text-amber-400">]</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">10</span>    <span class="text-amber-600">"seo_tags"</span><span class="text-neutral-400">:</span> <span class="text-amber-400">[</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">11</span>      <span class="text-amber-200">"#luxurywear"</span><span class="text-neutral-400">,</span> <span class="text-amber-200">"#amberstyle"</span><span class="text-neutral-400">,</span> <span class="text-amber-200">"#premiumtech"</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">12</span>    <span class="text-amber-400">]</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">13</span>    <span class="text-amber-600">"sentiment_score"</span><span class="text-neutral-400">:</span> <span class="text-amber-500">0.99</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">14</span>    <span class="text-amber-600">"market_fit"</span><span class="text-neutral-400">:</span> <span class="text-amber-200">"Exceptional"</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">15</span>  <span class="text-amber-400">}</span><span class="text-neutral-400">,</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">16</span>  <span class="text-amber-600">"deployment_status"</span><span class="text-neutral-400">:</span> <span class="text-amber-200">"Authorized"</span>
+<span class="text-neutral-700 select-none mr-3 lg:mr-4 border-r border-neutral-800 pr-2">17</span><span class="text-amber-400">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="flex-none flex items-center justify-center py-4 bg-black/80 border-t border-white/5 backdrop-blur-md z-10">
+<span class="text-[10px] lg:text-xs text-neutral-600 font-medium tracking-wide">© 2026 Bhishaj Technologies — All Rights Reserved</span>
+</footer>
+<script>
+        tailwind.config.theme.extend.animation = {
+            shine: 'shine 1.5s infinite',
+        }
+        tailwind.config.theme.extend.keyframes = {
+            shine: {
+                '0%': { left: '-100%' },
+                '100%': { left: '200%' },
+            }
+        }
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const startBtn = document.getElementById('startBtn');
+        const jsonOutput = document.getElementById('jsonOutput');
+        const deployBtn = document.getElementById('deployBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const copyIcon = document.getElementById('copyIcon');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let selectedFile = null;
+        let isCatalogGenerated = false;
+        const defaultDropZoneContent = `
+            <div class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
+            <div class="size-14 lg:size-16 relative z-10 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 relative z-10">
+                <p class="text-white text-base lg:text-lg font-bold leading-tight tracking-tight text-center">Drop Product Image Here</p>
+                <p class="text-neutral-500 text-xs lg:text-sm font-medium text-center">Supports JPG, PNG, WEBP</p>
+            </div>
+            <button id="browseBtn"
+                class="mt-2 relative z-10 flex items-center justify-center rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] lg:text-xs font-bold transition-all uppercase tracking-wide">
+                Browse Files
+            </button>
+        `;
+        function initDropZone() {
+            const browseBtn = document.getElementById('browseBtn');
+            if (browseBtn) {
+                browseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    fileInput.click();
+                });
+            }
+        }
+        initDropZone();
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-amber-500');
+            dropZone.classList.add('bg-amber-500/5');
+        });
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-amber-500');
+            dropZone.classList.remove('bg-amber-500/5');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-amber-500');
+            dropZone.classList.remove('bg-amber-500/5');
+            if (e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+        function handleFile(file) {
+            selectedFile = file;
+            dropZone.innerHTML = `
+                <div class="flex flex-col items-center justify-center gap-4 z-10">
+                    <div class="size-14 lg:size-16 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center">
+                         <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">check_circle</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <p class="text-white text-base lg:text-lg font-bold text-center">${file.name}</p>
+                        <p class="text-neutral-500 text-xs lg:text-sm text-center">${(file.size / 1024).toFixed(1)} KB</p>
+                    </div>
+                     <button id="removeFileBtn" class="mt-2 flex items-center justify-center gap-2 rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all text-[10px] lg:text-xs font-bold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-sm lg:text-base">close</span>
+                        <span>Remove File</span>
+                    </button>
+                </div>
+            `;
+            document.getElementById('removeFileBtn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                resetUploadUI();
+            });
+        }
+        function resetUploadUI() {
+            selectedFile = null;
+            fileInput.value = "";
+            dropZone.innerHTML = defaultDropZoneContent;
+            initDropZone();
+        }
+        deployBtn.addEventListener('click', () => {
+            if (!isCatalogGenerated) {
+                alert("Please generate a catalog first before deploying.");
+                return;
+            }
+            const originalContent = deployBtn.innerHTML;
+            deployBtn.disabled = true;
+            deployBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            `;
+            setTimeout(() => {
+                alert("Success: Catalog pushed to storefront!");
+                deployBtn.innerHTML = originalContent;
+                deployBtn.disabled = false;
+            }, 1500);
+        });
+        copyBtn.addEventListener('click', () => {
+            const textToCopy = jsonOutput.innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalIcon = copyIcon.innerText;
+                copyIcon.style.opacity = '0';
+                copyIcon.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    copyIcon.innerText = 'check';
+                    copyIcon.classList.remove('text-neutral-500');
+                    copyIcon.classList.add('text-amber-500');
+                    copyIcon.classList.add('animate-copy-success');
+                    copyIcon.style.opacity = '1';
+                    copyIcon.style.transform = 'scale(1)';
+                    copyBtn.classList.add('copy-active');
+                }, 150);
+                setTimeout(() => {
+                    copyIcon.style.opacity = '0';
+                    copyIcon.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        copyIcon.innerText = originalIcon;
+                        copyIcon.classList.remove('text-amber-500', 'animate-copy-success');
+                        copyIcon.classList.add('text-neutral-500');
+                        copyIcon.style.opacity = '1';
+                        copyIcon.style.transform = 'scale(1)';
+                        copyBtn.classList.remove('copy-active');
+                    }, 150);
+                }, 2000);
+            });
+        });
+        downloadBtn.addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonOutput.innerText);
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "merchflow_output.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+        startBtn.addEventListener('click', async () => {
+            if (!selectedFile) {
+                alert("Please select a file first.");
+                return;
+            }
+            startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3"><svg class="animate-spin h-4 w-4 lg:h-5 lg:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="text-white text-base lg:text-lg font-bold tracking-wide">Synthesizing...</span></div>';
+            startBtn.disabled = true;
+            startBtn.classList.remove('animate-pulse-slow', 'animate-glow-pulse');
+            setTimeout(() => {
+                isCatalogGenerated = true;
+                startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10"><span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span><span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span></div>';
+                startBtn.disabled = false;
+                startBtn.classList.add('animate-pulse-slow', 'animate-glow-pulse');
+            }, 1500);
+        });
+    </script>
+
+</body></html>

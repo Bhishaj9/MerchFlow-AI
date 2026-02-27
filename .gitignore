@@ -1,0 +1,30 @@
+# Credentials and Secrets
+.env
+
+# Python Compiled Files
+__pycache__/
+*.py[cod]
+
+# Virtual Environments
+venv/
+.venv/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor Directories
+.vscode/
+.idea/
+
+*.jpg
+
+stitch_merchflow_ai_dashboard.zip
+screen.jpg
+test_image.jpg
+*.zip
+*.jpeg
+*.png
