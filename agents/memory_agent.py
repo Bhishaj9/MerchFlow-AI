@@ -47,7 +47,7 @@ class MemoryAgent:
         result = self.client.models.embed_content(
             model="gemini-embedding-001",
             contents=text,
-            config={"task_type": "retrieval_document"}
+            config=genai.types.EmbedContentConfig(output_dimensionality=768)
         )
         return result.embeddings[0].values
 
