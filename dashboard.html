@@ -391,11 +391,25 @@
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
             `;
-            setTimeout(() => {
-                alert("Success: Catalog pushed to storefront!");
-                deployBtn.innerHTML = originalContent;
-                deployBtn.disabled = false;
-            }, 1500);
+            try {
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                
+                const response = await fetch('/generate-catalog', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                jsonOutput.textContent = JSON.stringify(data, null, 2);
+                isCatalogGenerated = true;
+            } catch (error) {
+                console.error("Error generating catalog:", error);
+            } finally {
+                startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10"><span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span><span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span></div>';
+                startBtn.disabled = false;
+                startBtn.classList.add('animate-pulse-slow', 'animate-glow-pulse');
+            }
         });
         copyBtn.addEventListener('click', () => {
             const textToCopy = jsonOutput.innerText;
@@ -403,52 +417,25 @@
                 const originalIcon = copyIcon.innerText;
                 copyIcon.style.opacity = '0';
                 copyIcon.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    copyIcon.innerText = 'check';
-                    copyIcon.classList.remove('text-neutral-500');
-                    copyIcon.classList.add('text-amber-500');
-                    copyIcon.classList.add('animate-copy-success');
-                    copyIcon.style.opacity = '1';
-                    copyIcon.style.transform = 'scale(1)';
-                    copyBtn.classList.add('copy-active');
-                }, 150);
-                setTimeout(() => {
-                    copyIcon.style.opacity = '0';
-                    copyIcon.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        copyIcon.innerText = originalIcon;
-                        copyIcon.classList.remove('text-amber-500', 'animate-copy-success');
-                        copyIcon.classList.add('text-neutral-500');
-                        copyIcon.style.opacity = '1';
-                        copyIcon.style.transform = 'scale(1)';
-                        copyBtn.classList.remove('copy-active');
-                    }, 150);
-                }, 2000);
-            });
-        });
-        downloadBtn.addEventListener('click', () => {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonOutput.innerText);
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "merchflow_output.json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-        });
-        startBtn.addEventListener('click', async () => {
-            if (!selectedFile) {
-                alert("Please select a file first.");
-                return;
-            }
-            startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3"><svg class="animate-spin h-4 w-4 lg:h-5 lg:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="text-white text-base lg:text-lg font-bold tracking-wide">Synthesizing...</span></div>';
-            startBtn.disabled = true;
-            startBtn.classList.remove('animate-pulse-slow', 'animate-glow-pulse');
-            setTimeout(() => {
+                try {
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                
+                const response = await fetch('/generate-catalog', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                jsonOutput.textContent = JSON.stringify(data, null, 2);
                 isCatalogGenerated = true;
+            } catch (error) {
+                console.error("Error generating catalog:", error);
+            } finally {
                 startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10"><span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span><span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span></div>';
                 startBtn.disabled = false;
                 startBtn.classList.add('animate-pulse-slow', 'animate-glow-pulse');
-            }, 1500);
+            }
         });
     </script>
 
