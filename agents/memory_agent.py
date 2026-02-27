@@ -45,7 +45,7 @@ class MemoryAgent:
     def _get_embedding(self, text):
         # Using models/text-embedding-004
         result = self.client.models.embed_content(
-            model="text-embedding-004",
+            model="gemini-embedding-001",
             contents=text,
             config={"task_type": "retrieval_document"}
         )
