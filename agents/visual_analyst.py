@@ -1,7 +1,7 @@
 import os
 import json
 import re
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,9 +12,8 @@ class VisualAnalyst:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found")
         
-        genai.configure(api_key=self.api_key)
-        self.model_name = "models/gemini-flash-latest"
-        self.model = genai.GenerativeModel(self.model_name)
+        self.client = genai.Client(api_key=self.api_key)
+        self.model_name = "gemini-1.5-flash"
         print(f"✅ VisualAnalyst stored Gemini model: {self.model_name}")
 
     async def analyze_image(self, image_path: str):
@@ -35,9 +34,12 @@ class VisualAnalyst:
                 "Return ONLY valid JSON with keys: main_color, product_type, design_style, visual_features."
             )
             
-            # Gemini 1.5 Flash supports JSON response schema, but simple prompting often works well too.
             # We'll stick to prompt engineering for now to match the "Return ONLY valid JSON" instruction.
-            response = self.model.generate_content([user_prompt, img], request_options={'timeout': 15.0})
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=[user_prompt, img],
+                config={'timeout': 15.0} # Alternatively, timeouts might be configured at the client level, but we maintain the logic.
+            )
             
             response_text = response.text
             

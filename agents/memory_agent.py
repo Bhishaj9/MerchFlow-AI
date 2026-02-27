@@ -2,7 +2,7 @@ import os
 import time
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
-import google.generativeai as genai
+from google import genai
 
 load_dotenv()
 
@@ -12,7 +12,7 @@ class MemoryAgent:
         self.gemini_api_key = os.getenv("GEMINI_API_KEY")
         if not self.gemini_api_key:
             raise ValueError("GEMINI_API_KEY not found")
-        genai.configure(api_key=self.gemini_api_key)
+        self.client = genai.Client(api_key=self.gemini_api_key)
         
         # Configure Pinecone
         self.pinecone_api_key = os.getenv("PINECONE_API_KEY")
@@ -44,12 +44,12 @@ class MemoryAgent:
 
     def _get_embedding(self, text):
         # Using models/text-embedding-004
-        result = genai.embed_content(
-            model="models/text-embedding-004",
-            content=text,
-            task_type="retrieval_document"
+        result = self.client.models.embed_content(
+            model="text-embedding-004",
+            contents=text,
+            config={"task_type": "retrieval_document"}
         )
-        return result['embedding']
+        return result.embeddings[0].values
 
     def seed_database(self):
         # Check if empty
