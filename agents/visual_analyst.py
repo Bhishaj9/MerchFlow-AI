@@ -12,7 +12,7 @@ class VisualAnalyst:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found")
         
-        self.client = genai.Client(api_key=self.api_key)
+        self.client = genai.Client(api_key=self.api_key, http_options={'timeout': 15.0})
         self.model_name = "gemini-1.5-flash"
         print(f"✅ VisualAnalyst stored Gemini model: {self.model_name}")
 
@@ -37,8 +37,7 @@ class VisualAnalyst:
             # We'll stick to prompt engineering for now to match the "Return ONLY valid JSON" instruction.
             response = self.client.models.generate_content(
                 model=self.model_name,
-                contents=[user_prompt, img],
-                config={'timeout': 15.0} # Alternatively, timeouts might be configured at the client level, but we maintain the logic.
+                contents=[user_prompt, img]
             )
             
             response_text = response.text
