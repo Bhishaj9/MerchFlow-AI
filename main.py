@@ -2,8 +2,9 @@ import os
 import asyncio
 import json
 import traceback
+from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from dotenv import load_dotenv
 
 # Import Agents
@@ -14,6 +15,7 @@ from agents.writer_agent import WriterAgent
 load_dotenv()
 
 app = FastAPI()
+BASE_DIR = Path(__file__).resolve().parent
 
 # Initialize Agents
 try:
@@ -32,13 +34,20 @@ except Exception as e:
     print(f"❌ Agent Startup Failed: {e}")
     # We continue, but endpoints might fail if agents aren't ready.
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 async def read_root():
-    try:
-        with open("dashboard.html", "r") as f:
-            return f.read()
-    except FileNotFoundError:
-        return "<h1>Error: dashboard.html not found</h1>"
+    landing_page = BASE_DIR / "landingpage.html"
+    if not landing_page.exists():
+        raise HTTPException(status_code=404, detail="landingpage.html not found")
+    return FileResponse(landing_page)
+
+
+@app.get("/dashboard")
+async def read_dashboard():
+    dashboard_page = BASE_DIR / "dashboard.html"
+    if not dashboard_page.exists():
+        raise HTTPException(status_code=404, detail="dashboard.html not found")
+    return FileResponse(dashboard_page)
 
 @app.post("/generate-catalog")
 async def generate_catalog(file: UploadFile = File(...)):
