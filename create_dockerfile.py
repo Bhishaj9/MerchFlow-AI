@@ -1,11 +1,13 @@
 import subprocess
 import sys
+import shlex
 
 def run_command(command):
     print(f"Running: {command}")
     try:
-        # shell=True allows us to run the command string exactly as provided
-        subprocess.run(command, shell=True, check=True)
+        # Use shlex.split to safely convert command string to a list for subprocess
+        # shell=False (default) prevents shell interpolation vulnerabilities
+        subprocess.run(shlex.split(command), check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error executing command '{command}': {e}")
         sys.exit(1)
