@@ -53,9 +53,13 @@ async def read_dashboard():
 async def generate_catalog(file: UploadFile = File(...)):
     file_path = None
     try:
-        # 1. Save Temp File
+        # 1. Save Temp File securely
+        import uuid
         os.makedirs("uploads", exist_ok=True)
-        file_path = f"uploads/{file.filename}"
+        # Use a secure random filename to prevent path traversal
+        file_extension = os.path.splitext(file.filename)[1] if file.filename else ""
+        secure_filename = f"{uuid.uuid4().hex}{file_extension}"
+        file_path = f"uploads/{secure_filename}"
         with open(file_path, "wb") as f:
             f.write(await file.read())
         
