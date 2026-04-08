@@ -1,0 +1,3 @@
+## 2024-05-18 - [FastAPI Agentic Concurrency]
+**Learning:** [In FastAPI agentic pipelines, synchronous third-party API calls (like Pinecone searches or LLM completions) block the main event loop, causing requests to be processed sequentially instead of concurrently. Even if an endpoint is `async def`, any synchronous function call within it will block the entire thread.]
+**Action:** [Always use `asyncio.to_thread()` to wrap synchronous network calls (like `Pinecone.Index.query` or Groq completions) inside FastAPI `async def` endpoints or use asynchronous API clients if available. Adding `@lru_cache` to repeated memory retrieval queries drastically reduces external network calls and provides significant speedup.]

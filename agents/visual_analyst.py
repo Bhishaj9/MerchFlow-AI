@@ -1,4 +1,5 @@
 import os
+import asyncio
 import json
 import re
 from google import genai
@@ -35,7 +36,8 @@ class VisualAnalyst:
             )
             
             # We'll stick to prompt engineering for now to match the "Return ONLY valid JSON" instruction.
-            response = self.client.models.generate_content(
+            response = await asyncio.to_thread(
+                self.client.models.generate_content,
                 model=self.model_name,
                 contents=[user_prompt, img]
             )
