@@ -12,3 +12,5 @@
 **Vulnerability:** The `create_dockerfile.py` script used `subprocess.run(command, shell=True)`, which is vulnerable to shell injection if any part of the command string is derived from untrusted input. While the current commands were hardcoded, this pattern is inherently risky.
 **Learning:** Using `shell=True` allows the shell to interpret special characters like `;`, `&`, and `|`, which can be exploited to execute arbitrary commands.
 **Prevention:** Avoid `shell=True` whenever possible. Instead, pass the command as a list of arguments. Use `shlex.split()` to safely parse command strings into argument lists if needed.
+
+- 2024-xx-xx: Image Parsing Security: Prevent decompression bombs by validating file extensions, enforcing size limits (e.g., 20MB) with `os.path.getsize`, and setting `PIL.Image.MAX_IMAGE_PIXELS` before loading user-provided images with PIL.

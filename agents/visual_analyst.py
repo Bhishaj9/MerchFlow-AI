@@ -18,7 +18,23 @@ class VisualAnalyst:
         print(f"✅ VisualAnalyst stored Gemini model: {self.model_name}")
 
     async def analyze_image(self, image_path: str):
+        MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024  # 20 MB limit
+        ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.gif'}
+
         try:
+            if not os.path.exists(image_path):
+                raise FileNotFoundError(f"Image not found at {image_path}")
+
+            # Security: Validate file extension
+            ext = os.path.splitext(image_path)[1].lower()
+            if ext not in ALLOWED_EXTENSIONS:
+                raise ValueError(f"Unsupported or insecure file type: {ext}")
+
+            # Security: Validate file size to prevent decompression bombs and memory exhaustion
+            file_size = os.path.getsize(image_path)
+            if file_size > MAX_FILE_SIZE_BYTES:
+                raise ValueError(f"File too large: {file_size} bytes exceeds limit of {MAX_FILE_SIZE_BYTES} bytes")
+
             # Upload the file to Gemini
             # Note: For efficiency in production, files should be managed (uploads/deletes)
             # but for this agentic flow, we'll upload per request or assume local path usage helper if needed.
@@ -28,6 +44,8 @@ class VisualAnalyst:
             # actually, standard genai usage for images usually involves PIL or uploading.
             # Let's try the PIL approach first as it's often more direct for local scripts.
             import PIL.Image
+            # Security: Prevent decompression bombs by strictly limiting image pixel dimensions
+            PIL.Image.MAX_IMAGE_PIXELS = 100000000  # ~100 megapixels max
             img = await asyncio.to_thread(PIL.Image.open, image_path)
             
             user_prompt = (

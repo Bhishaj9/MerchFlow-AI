@@ -18,8 +18,10 @@ class TestVisualAnalystException(unittest.IsolatedAsyncioTestCase):
     def setUp(self):
         self.analyst = VisualAnalyst()
 
+    @patch('os.path.exists', return_value=True)
+    @patch('os.path.getsize', return_value=1000)
     @patch('asyncio.to_thread')
-    async def test_analyze_image_exception(self, mock_to_thread):
+    async def test_analyze_image_exception(self, mock_to_thread, mock_getsize, mock_exists):
         # We need to mock asyncio.to_thread because it's used for both PIL.Image.open
         # and self.client.models.generate_content.
 
@@ -38,8 +40,10 @@ class TestVisualAnalystException(unittest.IsolatedAsyncioTestCase):
         # Verify it was called
         mock_to_thread.assert_called()
 
+    @patch('os.path.exists', return_value=True)
+    @patch('os.path.getsize', return_value=1000)
     @patch('asyncio.to_thread')
-    async def test_analyze_image_genai_exception(self, mock_to_thread):
+    async def test_analyze_image_genai_exception(self, mock_to_thread, mock_getsize, mock_exists):
         # First call (PIL) succeeds, second call (GenAI) fails
         mock_to_thread.side_effect = [MagicMock(), Exception("Gemini API Error")]
 
@@ -50,5 +54,35 @@ class TestVisualAnalystException(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result["main_color"], "Unknown")
         self.assertIn("Error: Gemini API Error", result["visual_features"][0])
 
+
+    @patch('os.path.exists')
+    @patch('os.path.getsize')
+    async def test_analyze_image_invalid_extension(self, mock_getsize, mock_exists):
+        mock_exists.return_value = True
+        mock_getsize.return_value = 1000  # Valid size
+
+        result = await self.analyst.analyze_image("test.txt")
+        self.assertEqual(result["main_color"], "Unknown")
+        self.assertTrue(any("Unsupported or insecure file type" in feature for feature in result["visual_features"]))
+
+    @patch('os.path.exists')
+    @patch('os.path.getsize')
+    async def test_analyze_image_file_too_large(self, mock_getsize, mock_exists):
+        mock_exists.return_value = True
+        mock_getsize.return_value = 21 * 1024 * 1024  # 21 MB, exceeds limit
+
+        result = await self.analyst.analyze_image("test.jpg")
+        self.assertEqual(result["main_color"], "Unknown")
+        self.assertTrue(any("File too large" in feature for feature in result["visual_features"]))
+
+    @patch('os.path.exists')
+    async def test_analyze_image_not_found(self, mock_exists):
+        mock_exists.return_value = False
+
+        result = await self.analyst.analyze_image("test.jpg")
+        self.assertEqual(result["main_color"], "Unknown")
+        self.assertTrue(any("Image not found" in feature for feature in result["visual_features"]))
+
 if __name__ == '__main__':
+
     unittest.main()
