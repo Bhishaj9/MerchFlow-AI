@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import asyncio
 from google import genai
 from dotenv import load_dotenv
 
@@ -27,7 +28,7 @@ class VisualAnalyst:
             # actually, standard genai usage for images usually involves PIL or uploading.
             # Let's try the PIL approach first as it's often more direct for local scripts.
             import PIL.Image
-            img = PIL.Image.open(image_path)
+            img = await asyncio.to_thread(PIL.Image.open, image_path)
             
             user_prompt = (
                 "Analyze this product image. "
@@ -35,7 +36,8 @@ class VisualAnalyst:
             )
             
             # We'll stick to prompt engineering for now to match the "Return ONLY valid JSON" instruction.
-            response = self.client.models.generate_content(
+            response = await asyncio.to_thread(
+                self.client.models.generate_content,
                 model=self.model_name,
                 contents=[user_prompt, img]
             )
