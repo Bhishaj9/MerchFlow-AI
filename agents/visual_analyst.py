@@ -28,7 +28,7 @@ class VisualAnalyst:
             # actually, standard genai usage for images usually involves PIL or uploading.
             # Let's try the PIL approach first as it's often more direct for local scripts.
             import PIL.Image
-            img = PIL.Image.open(image_path)
+            img = await asyncio.to_thread(PIL.Image.open, image_path)
             
             user_prompt = (
                 "Analyze this product image. "
