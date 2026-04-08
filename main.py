@@ -69,7 +69,7 @@ async def generate_catalog(file: UploadFile = File(...)):
         
         print("▶️ Retrieving Keywords...")
         query = f"{visual_data.get('main_color', '')} {visual_data.get('product_type', 'product')}"
-        seo_keywords = memory_agent.retrieve_keywords(query)
+        seo_keywords = await asyncio.to_thread(memory_agent.retrieve_keywords, query)
         
         # 2b. AI Fallback: Generate keywords if Pinecone returns empty
         if not seo_keywords:
@@ -81,7 +81,8 @@ async def generate_catalog(file: UploadFile = File(...)):
                     f"generate a list of 10 high-converting e-commerce SEO tags "
                     f"and return them as a JSON array of strings. Return ONLY the JSON array."
                 )
-                fallback_response = visual_agent.client.models.generate_content(
+                fallback_response = await asyncio.to_thread(
+                    visual_agent.client.models.generate_content,
                     model="gemini-2.5-flash",
                     contents=fallback_prompt
                 )
@@ -97,7 +98,7 @@ async def generate_catalog(file: UploadFile = File(...)):
                 seo_keywords = []
         
         print("▶️ Writing Listing...")
-        listing = writer_agent.write_listing(visual_data, seo_keywords)
+        listing = await asyncio.to_thread(writer_agent.write_listing, visual_data, seo_keywords)
         
         # 3. Construct Final Payload
         final_data = {

@@ -1,4 +1,5 @@
 import os
+from functools import lru_cache
 import time
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
@@ -89,6 +90,7 @@ class MemoryAgent:
         self.index.upsert(vectors=vectors)
         print(f"Seeded {len(vectors)} items.")
 
+    @lru_cache(maxsize=128)
     def retrieve_keywords(self, query_text: str):
         try:
             query_embedding = self._get_embedding(query_text)
