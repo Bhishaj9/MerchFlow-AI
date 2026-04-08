@@ -1,6 +1,4 @@
-import sys
 import subprocess
-import re
 
 def fix_html():
     with open('dashboard.html', 'r', encoding='utf-8') as f:
