@@ -8,6 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from dotenv import load_dotenv
 
+ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".heic"}
+
 # Import Agents
 from agents.visual_analyst import VisualAnalyst
 from agents.memory_agent import MemoryAgent
@@ -67,10 +69,15 @@ async def generate_catalog(file: UploadFile = File(...)):
         # 1. Save Temp File securely
         import uuid
         os.makedirs("uploads", exist_ok=True)
+
         # Use a secure random filename to prevent path traversal
-        file_extension = os.path.splitext(file.filename)[1] if file.filename else ""
+        raw_extension = os.path.splitext(file.filename)[1].lower() if file.filename else ""
+        # Strictly whitelist allowed image extensions to prevent injection
+        file_extension = raw_extension if raw_extension in ALLOWED_EXTENSIONS else ""
+
         secure_filename = f"{uuid.uuid4().hex}{file_extension}"
         file_path = f"uploads/{secure_filename}"
+
         with open(file_path, "wb") as f:
             f.write(await file.read())
         
