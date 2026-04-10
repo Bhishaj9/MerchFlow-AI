@@ -1,0 +1,3 @@
+## 2024-05-24 - Material Symbols Accessibility Pattern
+**Learning:** This application uses Material Symbols via text ligatures (e.g., `<span class="material-symbols-outlined">rocket_launch</span>`). Screen readers read these raw ligatures literally (e.g., "rocket underscore launch") which creates a confusing experience for assistive technology users. Icon-only buttons without explicit labels further compound this issue.
+**Action:** Always add `aria-hidden="true"` to any `<span class="material-symbols-outlined">` elements to hide the ligature text from assistive technologies. For icon-only buttons, always ensure a descriptive `aria-label` is added to the parent button element to provide context.

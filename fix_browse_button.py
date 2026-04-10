@@ -14,7 +14,7 @@ def fix_html():
             if (fileInput.files.length > 0) {
                 // Provide a visual cue that a file was selected
                 const fileName = fileInput.files[0].name;
-                browseBtn.innerHTML = `<span class="material-symbols-outlined text-xl">check_circle</span> ${fileName}`;
+                browseBtn.innerHTML = `<span class="material-symbols-outlined text-xl" aria-hidden="true">check_circle</span> ${fileName}`;
             }
         });
 """

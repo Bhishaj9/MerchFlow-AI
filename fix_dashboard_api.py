@@ -24,7 +24,7 @@ def patch_dashboard():
             } catch (error) {
                 console.error("Error generating catalog:", error);
             } finally {
-                startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10"><span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span><span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span></div>';
+                startBtn.innerHTML = '<div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10"><span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span><span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_forward</span></div>';
                 startBtn.disabled = false;
                 startBtn.classList.add('animate-pulse-slow', 'animate-glow-pulse');
             }"""
