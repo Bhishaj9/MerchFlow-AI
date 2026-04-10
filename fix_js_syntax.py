@@ -29,7 +29,7 @@ let isCatalogGenerated = false;
 const defaultDropZoneContent = `
     <div class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
     <div class="size-14 lg:size-16 relative z-10 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
-        <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
+        <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500" aria-hidden="true">cloud_upload</span>
     </div>
     <div class="flex flex-col items-center gap-1 relative z-10">
         <p class="text-white text-base lg:text-lg font-bold leading-tight tracking-tight text-center">Drop Product Image Here</p>
@@ -69,14 +69,14 @@ function handleFile(file) {
     dropZone.innerHTML = `
         <div class="flex flex-col items-center justify-center gap-4 z-10">
             <div class="size-14 lg:size-16 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center">
-                 <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">check_circle</span>
+                 <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500" aria-hidden="true">check_circle</span>
             </div>
             <div class="flex flex-col items-center gap-1">
                 <p class="text-white text-base lg:text-lg font-bold text-center">${file.name}</p>
                 <p class="text-neutral-500 text-xs lg:text-sm text-center">${(file.size / 1024).toFixed(1)} KB</p>
             </div>
              <button id="removeFileBtn" class="mt-2 flex items-center justify-center gap-2 rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all text-[10px] lg:text-xs font-bold uppercase tracking-wide">
-                <span class="material-symbols-outlined text-sm lg:text-base">close</span>
+                <span class="material-symbols-outlined text-sm lg:text-base" aria-hidden="true">close</span>
                 <span>Remove File</span>
             </button>
         </div>
