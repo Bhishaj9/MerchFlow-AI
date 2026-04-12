@@ -1,0 +1,3 @@
+## 2026-04-12 - Material Symbols and Icon-Only Button Accessibility
+**Learning:** The frontend uses Google Material Symbols ligatures (e.g., `rocket_launch`) for icons. Screen readers will literally read these raw text strings unless specifically hidden, which confuses users. Furthermore, there are several icon-only buttons (like the copy and download buttons) that lacked any descriptive labels, meaning screen reader users wouldn't know what the buttons did.
+**Action:** `aria-hidden="true"` must be explicitly added to all `<span class="material-symbols-outlined">` elements. All icon-only buttons (`<button>`, `<a>`, etc.) must include a descriptive `aria-label` attribute (e.g., `aria-label="Copy JSON"`).
