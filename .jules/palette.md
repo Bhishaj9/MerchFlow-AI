@@ -1,0 +1,4 @@
+# Palette Journal
+## 2024-04-17 - [Structural Accessibility for Ligature Icons & Icon-only Buttons]
+**Learning:** Structural icon elements (like `<span class="material-symbols-outlined">` containing text ligatures) need to be explicitly hidden from screen readers using `aria-hidden="true"`, otherwise screen readers will attempt to read the raw ligature text (e.g. "rocket_launch" or "cloud_upload") aloud which creates a confusing experience. At the same time, any clickable element (like `<button>` or `<a>`) that relies solely on these icons must be explicitly given a descriptive `aria-label` attribute to ensure proper context is provided for screen reader users since visual cues are hidden.
+**Action:** When adding new UI elements containing text-based ligature icons, ensure `<span class="material-symbols-outlined">` spans get `aria-hidden="true"` and parent interactive elements (like icon-only buttons) receive appropriate `aria-label`s describing their action.
