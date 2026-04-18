@@ -1,0 +1,3 @@
+## 2024-06-25 - Icon-only buttons lacking accessible names
+**Learning:** Found multiple instances where buttons containing only Material Symbol icons relied solely on `title` attributes. While `title` gives a hover tooltip, it is not consistently read by all screen readers, leading to unannounced "Button" elements for visually impaired users navigating via keyboard.
+**Action:** Always explicitly add `aria-label` attributes to any icon-only `<button>` or `<a>` tags to ensure definitive screen reader accessibility. Ensure the inner structural element, such as `<span class="material-symbols-outlined">`, has `aria-hidden="true"`.
