@@ -1,0 +1,3 @@
+## 2026-04-21 - Responsive Hidden Text Accessibility
+**Learning:** When using responsive utility classes (like Tailwind's `hidden lg:inline`) to hide descriptive text on smaller screens (leaving only an icon visible), the parent interactive element (`<button>` or `<a>`) loses its accessible name on those smaller viewports for screen readers.
+**Action:** Always add an explicit `aria-label` attribute to the parent interactive element when text visibility is conditionally controlled by viewport size, and ensure structural icon elements (like `<span class="material-symbols-outlined">`) explicitly include `aria-hidden="true"` to prevent raw ligature text from being read aloud.
