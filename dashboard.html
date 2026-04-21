@@ -147,13 +147,13 @@
 </div>
 </div>
 </div>
-<a class="hidden sm:inline-flex flex-none items-center justify-center rounded-full h-9 lg:h-10 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs lg:text-sm font-bold transition-all" href="/">
-<span class="material-symbols-outlined text-lg lg:mr-2">arrow_back</span>
+<a class="hidden sm:inline-flex flex-none items-center justify-center rounded-full h-9 lg:h-10 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs lg:text-sm font-bold transition-all" href="/" aria-label="Back to Home">
+<span class="material-symbols-outlined text-lg lg:mr-2" aria-hidden="true">arrow_back</span>
 <span class="hidden lg:inline">Back to Home</span>
 </a>
-<button class="group relative flex-none flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 lg:h-10 px-4 lg:px-6 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all" id="deployBtn">
+<button class="group relative flex-none flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 lg:h-10 px-4 lg:px-6 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all" id="deployBtn" aria-label="Deploy">
 <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<span class="material-symbols-outlined lg:mr-2 text-lg relative z-10">rocket_launch</span>
+<span class="material-symbols-outlined lg:mr-2 text-lg relative z-10" aria-hidden="true">rocket_launch</span>
 <span class="hidden lg:inline truncate text-sm font-bold tracking-wide relative z-10">Deploy</span>
 </button>
 </div>
@@ -196,7 +196,7 @@
 <button class="group relative w-full cursor-pointer overflow-hidden rounded-xl lg:rounded-2xl h-12 lg:h-14 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 transition-all border border-white/10 animate-pulse-slow animate-glow-pulse" id="startBtn">
 <div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10">
 <span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span>
-<span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_forward</span>
 </div>
 </button>
 </div>
@@ -210,11 +210,11 @@
 <div class="flex items-center gap-2">
 <span class="hidden xs:inline-block bg-white/5 text-amber-200 px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-semibold border border-white/10 backdrop-blur-sm">Step 2 of 2</span>
 <div class="hidden xs:block h-6 w-px bg-white/10 mx-1"></div>
-<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-all duration-300 border border-transparent" id="copyBtn" title="Copy JSON">
-<span class="material-symbols-outlined text-lg lg:text-xl transition-all duration-300" id="copyIcon">content_copy</span>
+<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-all duration-300 border border-transparent" id="copyBtn" title="Copy JSON" aria-label="Copy JSON">
+<span class="material-symbols-outlined text-lg lg:text-xl transition-all duration-300" id="copyIcon" aria-hidden="true">content_copy</span>
 </button>
-<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-colors" id="downloadBtn" title="Download JSON">
-<span class="material-symbols-outlined text-lg lg:text-xl">download</span>
+<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-colors" id="downloadBtn" title="Download JSON" aria-label="Download JSON">
+<span class="material-symbols-outlined text-lg lg:text-xl" aria-hidden="true">download</span>
 </button>
 </div>
 </div>
@@ -351,7 +351,7 @@ function handleFile(file) {
                 <p class="text-neutral-500 text-xs lg:text-sm text-center">${(file.size / 1024).toFixed(1)} KB</p>
             </div>
              <button id="removeFileBtn" class="mt-2 flex items-center justify-center gap-2 rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all text-[10px] lg:text-xs font-bold uppercase tracking-wide">
-                <span class="material-symbols-outlined text-sm lg:text-base">close</span>
+                <span class="material-symbols-outlined text-sm lg:text-base" aria-hidden="true">close</span>
                 <span>Remove File</span>
             </button>
         </div>
