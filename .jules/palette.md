@@ -1,0 +1,3 @@
+## 2026-04-27 - [Material Symbols & Responsive Text Accessibility]
+**Learning:** When using text-based icon fonts like Material Symbols, the raw ligature text (e.g., "rocket_launch") is read by screen readers unless explicitly hidden. Additionally, buttons that hide their visible text on smaller viewports (e.g., using `hidden lg:inline`) become completely unlabelled for screen reader users on those devices.
+**Action:** Always add `aria-hidden="true"` to structural icon elements (like `<span class="material-symbols-outlined">`) and provide explicit `aria-label` attributes on parent interactive elements (like `<button>` or `<a>`) to ensure consistent accessibility across all screen sizes.
