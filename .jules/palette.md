@@ -1,0 +1,3 @@
+## 2026-04-29 - Accessible Material Symbols and Icon-only Buttons
+**Learning:** Material Symbols text ligatures (e.g., `all_inclusive`) and icon-only buttons can cause accessibility issues. Screen readers might announce the ligature text out of context or miss the purpose of the button entirely if visible text is hidden responsively.
+**Action:** Always add `aria-hidden="true"` to structural icon elements like `<span class="material-symbols-outlined">`. Always ensure interactive elements (`<button>`, `<a>`) have an explicit `aria-label` attribute if their visible text is dynamically hidden (e.g., `hidden lg:inline`) or if they only contain icons.
