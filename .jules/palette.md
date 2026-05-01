@@ -1,0 +1,3 @@
+## 2024-05-14 - Hiding Material Symbols from Screen Readers
+**Learning:** Material Symbols (used as text ligatures in `<span>` tags) are read aloud by screen readers out of context (e.g., reading "rocket_launch" or "content_copy"), causing confusion, especially when their parent interactive elements are icon-only or hide text on small viewports using Tailwind responsive classes (like `hidden lg:inline`).
+**Action:** Always add `aria-hidden="true"` to `<span class="material-symbols-outlined">` elements used for icons. Crucially, before doing so, ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` to maintain an accessible name when the visible text is absent or hidden.
