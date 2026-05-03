@@ -1,0 +1,3 @@
+## 2026-10-27 - Responsive Text Collapse Accessibility
+**Learning:** When using responsive classes (like `hidden lg:inline`) to hide text inside buttons or links on smaller screens (leaving only an icon visible), the element loses its accessible name on those smaller screens.
+**Action:** Always add an explicit `aria-label` to the parent interactive element (`<button>` or `<a>`) to ensure a consistent accessible name across all viewport sizes, and add `aria-hidden="true"` to the icon element (e.g., `<span class="material-symbols-outlined">`) so screen readers don't read out the raw icon ligature instead.
