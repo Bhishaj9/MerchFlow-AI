@@ -1,0 +1,3 @@
+## 2026-05-04 - [Responsive Text Accessible Names]
+**Learning:** Using responsive tailwind classes (like `hidden lg:inline`) to hide text on smaller screens removes the accessible name of the interactive parent element (like `<button>` or `<a>`) for users on those screen sizes. Additionally, icon fonts (like `material-symbols-outlined`) are read by screen readers as their raw ligatures (e.g., "rocket_launch") unless explicitly hidden.
+**Action:** Always provide an explicit `aria-label` to interactive elements when their visible text is hidden responsively. Also, explicitly add `aria-hidden="true"` to the structural icon elements (like `<span class="material-symbols-outlined">`) to prevent screen readers from reading the raw ligatures.
