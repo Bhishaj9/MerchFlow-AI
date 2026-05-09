@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility for Responsive and Icon-only Buttons
+**Learning:** When text inside an interactive element is hidden visually on smaller screens using classes like `hidden lg:inline`, the element loses its accessible name on those viewports. Similarly, icon-only buttons need an accessible name and their icon spans need to be hidden from screen readers.
+**Action:** Always ensure that buttons and links have an explicit `aria-label` attribute if their text is hidden responsively or if they only contain icons. Structural icon elements (like `<span class="material-symbols-outlined">`) should have `aria-hidden="true"` to prevent screen readers from reading raw ligatures.
