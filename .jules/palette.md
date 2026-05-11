@@ -1,0 +1,3 @@
+## 2025-05-11 - Adding ARIA labels to icon-only interactive elements
+**Learning:** Icon-only interactive elements like `<button>` and `<a>` need `aria-label` attributes to be accessible to screen readers, especially when they only contain Material Symbols icons or visually hidden text via classes like `hidden lg:inline`. Parent interactive elements should define the accessible name, and structural icon elements like `<span class="material-symbols-outlined">` should ideally have `aria-hidden="true"`.
+**Action:** When creating icon buttons or links, or responsive buttons where text is hidden on small screens, ensure an explicit `aria-label` is present on the `<button>` or `<a>` to maintain consistent screen reader accessibility.
