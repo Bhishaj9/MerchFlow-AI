@@ -1,0 +1,3 @@
+## 2024-05-12 - Ensure Screen Reader Accessibility for Conditionally Visible Text
+**Learning:** When text inside an interactive element (like `<button>` or `<a>`) is hidden on smaller screens using utility classes (e.g., Tailwind's `hidden lg:inline`), and the element relies on an icon (e.g., Material Symbols), the interactive element loses its accessible name for screen readers on those smaller viewports.
+**Action:** Always add an explicit `aria-label` to the parent interactive element (`<button>` or `<a>`) to maintain consistent accessibility across all screen sizes. Additionally, structural icon elements (like `<span class="material-symbols-outlined">`) should include `aria-hidden="true"` to prevent screen readers from reading raw ligatures.
