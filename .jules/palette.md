@@ -1,0 +1,3 @@
+## 2024-05-15 - Responsive Button Accessibility
+**Learning:** When text inside an interactive element (`<button>` or `<a>`) is hidden on smaller viewports using responsive utility classes (like `hidden lg:inline`), the element loses its accessible name for screen reader users on mobile devices. Additionally, structural icon elements within these buttons are read as raw ligatures (e.g., "rocket_launch") if not properly hidden.
+**Action:** Always provide an explicit `aria-label` on the parent interactive element to ensure a consistent accessible name across all viewports, and apply `aria-hidden="true"` to purely decorative or structural icon elements within it.
