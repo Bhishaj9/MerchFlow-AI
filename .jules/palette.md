@@ -1,0 +1,3 @@
+## 2026-05-23 - Screen Reader Invisibility on Responsive and Icon-Only Buttons
+**Learning:** In Tailwind-styled applications, hiding button text on small screens (e.g., `hidden lg:inline`) without providing an `aria-label` causes the button to lose its accessible name for screen reader users on mobile. Additionally, screen readers attempt to pronounce raw font ligatures inside `<span class="material-symbols-outlined">` instead of treating them as icons.
+**Action:** Always pair `hidden` text classes with a parent `aria-label` on interactive elements, and add `aria-hidden="true"` to structural icon spans only after ensuring the parent has an accessible name.
