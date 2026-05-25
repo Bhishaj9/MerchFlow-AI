@@ -1,0 +1,3 @@
+## 2024-05-25 - ARIA Labels for Icon-Only Navigation Buttons
+**Learning:** Icon-only navigation links/buttons (e.g., using `material-symbols-outlined` with visible text hidden via Tailwind classes like `hidden lg:inline` on smaller screens) fail screen reader accessibility on mobile because the accessible name is completely hidden. This is particularly noticeable on the "Back to Home" button.
+**Action:** When using responsive text hiding classes (`hidden lg:inline`), ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` attribute and structural icons include `aria-hidden="true"` to maintain consistent accessibility across all viewports.
