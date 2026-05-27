@@ -1,0 +1,3 @@
+## 2024-05-27 - [Add ARIA hidden to icons and ARIA label to icon buttons]
+**Learning:** Structural icon elements (like <span class="material-symbols-outlined">) should include aria-hidden="true" to prevent screen readers from reading raw ligatures. Crucially, before applying aria-hidden="true" to an icon, you must ensure its parent interactive element (<button> or <a>) has an accessible name (e.g., visible text or aria-label); otherwise, the interactive element becomes completely invisible to screen readers.
+**Action:** Add aria-hidden="true" to structural icon elements within icon-only buttons. Added aria-label to the parent <button> elements.
