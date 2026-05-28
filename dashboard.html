@@ -137,7 +137,7 @@
 <div class="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
 <div class="flex items-center gap-3 lg:gap-4 flex-1 min-w-0">
 <div class="flex-none flex items-center justify-center size-9 lg:size-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-700 shadow-lg shadow-amber-900/20 text-white">
-<span class="material-symbols-outlined text-xl lg:text-2xl">all_inclusive</span>
+<span aria-hidden="true" class="material-symbols-outlined text-xl lg:text-2xl">all_inclusive</span>
 </div>
 <div class="min-w-0">
 <h2 class="text-white text-base lg:text-xl font-bold leading-tight tracking-tight truncate">MerchFlow AI</h2>
@@ -147,13 +147,13 @@
 </div>
 </div>
 </div>
-<a class="hidden sm:inline-flex flex-none items-center justify-center rounded-full h-9 lg:h-10 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs lg:text-sm font-bold transition-all" href="/">
-<span class="material-symbols-outlined text-lg lg:mr-2">arrow_back</span>
+<a aria-label="Back to Home" class="hidden sm:inline-flex flex-none items-center justify-center rounded-full h-9 lg:h-10 px-4 lg:px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs lg:text-sm font-bold transition-all" href="/">
+<span aria-hidden="true" class="material-symbols-outlined text-lg lg:mr-2">arrow_back</span>
 <span class="hidden lg:inline">Back to Home</span>
 </a>
-<button class="group relative flex-none flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 lg:h-10 px-4 lg:px-6 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all" id="deployBtn">
+<button aria-label="Deploy" class="group relative flex-none flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 lg:h-10 px-4 lg:px-6 bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 border border-white/10 shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all" id="deployBtn">
 <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<span class="material-symbols-outlined lg:mr-2 text-lg relative z-10">rocket_launch</span>
+<span aria-hidden="true" class="material-symbols-outlined lg:mr-2 text-lg relative z-10">rocket_launch</span>
 <span class="hidden lg:inline truncate text-sm font-bold tracking-wide relative z-10">Deploy</span>
 </button>
 </div>
@@ -172,7 +172,7 @@
 <div class="group relative flex flex-col items-center justify-center gap-3 lg:gap-4 rounded-2xl lg:rounded-3xl border-2 border-dashed border-white/10 hover:border-amber-500/50 hover:bg-white/5 transition-all cursor-pointer min-h-[200px] lg:min-h-[260px] px-4 py-6 lg:px-6 lg:py-8 glass-card" id="dropZone">
 <div class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
 <div class="size-14 lg:size-16 relative z-10 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
-<span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
+<span aria-hidden="true" class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
 </div>
 <div class="flex flex-col items-center gap-1 relative z-10">
 <p class="text-white text-base lg:text-lg font-bold leading-tight tracking-tight text-center">Drop Product Image Here</p>
@@ -196,7 +196,7 @@
 <button class="group relative w-full cursor-pointer overflow-hidden rounded-xl lg:rounded-2xl h-12 lg:h-14 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 transition-all border border-white/10 animate-pulse-slow animate-glow-pulse" id="startBtn">
 <div class="absolute inset-0 flex items-center justify-center gap-2 lg:gap-3 relative z-10">
 <span class="text-white text-base lg:text-lg font-bold tracking-wide group-hover:scale-105 transition-transform">Start Agent Workflow</span>
-<span class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<span aria-hidden="true" class="material-symbols-outlined text-white text-lg lg:text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </button>
 </div>
@@ -210,11 +210,11 @@
 <div class="flex items-center gap-2">
 <span class="hidden xs:inline-block bg-white/5 text-amber-200 px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-semibold border border-white/10 backdrop-blur-sm">Step 2 of 2</span>
 <div class="hidden xs:block h-6 w-px bg-white/10 mx-1"></div>
-<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-all duration-300 border border-transparent" id="copyBtn" title="Copy JSON">
-<span class="material-symbols-outlined text-lg lg:text-xl transition-all duration-300" id="copyIcon">content_copy</span>
+<button aria-label="Copy JSON" class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-all duration-300 border border-transparent" id="copyBtn" title="Copy JSON">
+<span aria-hidden="true" class="material-symbols-outlined text-lg lg:text-xl transition-all duration-300" id="copyIcon">content_copy</span>
 </button>
-<button class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-colors" id="downloadBtn" title="Download JSON">
-<span class="material-symbols-outlined text-lg lg:text-xl">download</span>
+<button aria-label="Download JSON" class="size-8 lg:size-9 flex items-center justify-center hover:bg-white/10 rounded-lg text-neutral-500 hover:text-amber-400 transition-colors" id="downloadBtn" title="Download JSON">
+<span aria-hidden="true" class="material-symbols-outlined text-lg lg:text-xl">download</span>
 </button>
 </div>
 </div>
@@ -252,7 +252,7 @@
 <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 <div class="flex items-center justify-between px-3 py-2.5 lg:px-4 lg:py-3 bg-white/5 border-b border-white/5">
 <span class="text-[10px] lg:text-xs font-mono text-neutral-500 flex items-center gap-2">
-<span class="material-symbols-outlined text-xs lg:text-sm">code</span>
+<span aria-hidden="true" class="material-symbols-outlined text-xs lg:text-sm">code</span>
                             output.json
                         </span>
 <div class="flex gap-1.5">
@@ -304,7 +304,7 @@ let isCatalogGenerated = false;
 const defaultDropZoneContent = `
     <div class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
     <div class="size-14 lg:size-16 relative z-10 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
-        <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">cloud_upload</span>
     </div>
     <div class="flex flex-col items-center gap-1 relative z-10">
         <p class="text-white text-base lg:text-lg font-bold leading-tight tracking-tight text-center">Drop Product Image Here</p>
@@ -344,14 +344,14 @@ function handleFile(file) {
     dropZone.innerHTML = `
         <div class="flex flex-col items-center justify-center gap-4 z-10">
             <div class="size-14 lg:size-16 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 shadow-lg flex items-center justify-center">
-                 <span class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">check_circle</span>
+                 <span aria-hidden="true" class="material-symbols-outlined text-2xl lg:text-3xl text-amber-500">check_circle</span>
             </div>
             <div class="flex flex-col items-center gap-1">
                 <p class="text-white text-base lg:text-lg font-bold text-center">${file.name}</p>
                 <p class="text-neutral-500 text-xs lg:text-sm text-center">${(file.size / 1024).toFixed(1)} KB</p>
             </div>
              <button id="removeFileBtn" class="mt-2 flex items-center justify-center gap-2 rounded-full h-8 lg:h-9 px-4 lg:px-5 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all text-[10px] lg:text-xs font-bold uppercase tracking-wide">
-                <span class="material-symbols-outlined text-sm lg:text-base">close</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-sm lg:text-base">close</span>
                 <span>Remove File</span>
             </button>
         </div>
