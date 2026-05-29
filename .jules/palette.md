@@ -1,0 +1,3 @@
+## 2024-05-29 - Accessible Icon-Only and Responsive Ligature Buttons
+**Learning:** Structural icon elements (like `<span class="material-symbols-outlined">`) must include `aria-hidden="true"` to prevent screen readers from reading raw ligatures. When buttons or links contain these icons and their visible text is hidden responsively (e.g., via `hidden lg:inline` Tailwind classes) or absent entirely, the parent interactive element must have an explicit `aria-label` attribute. Otherwise, it becomes an empty button to screen readers on smaller viewports.
+**Action:** Always add `aria-label` to interactive elements containing icons where visible text may be hidden or missing, and apply `aria-hidden="true"` directly to the ligature/icon span.
