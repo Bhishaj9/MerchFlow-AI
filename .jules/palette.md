@@ -1,0 +1,3 @@
+## 2026-05-30 - Responsive Icon-Only Button Accessibility
+**Learning:** When using responsive Tailwind classes (e.g., `hidden lg:inline`) to hide text on mobile, buttons that contain text on desktop can become icon-only on smaller screens. This causes them to lose their accessible name for screen readers on mobile devices if they lack an explicit `aria-label`.
+**Action:** Ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` attribute, and apply `aria-hidden="true"` to the structural icon element (`<span class="material-symbols-outlined">`) to prevent screen readers from reading raw ligatures.
