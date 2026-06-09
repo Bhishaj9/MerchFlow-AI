@@ -1,0 +1,3 @@
+## 2026-02-23 - Responsive Tailwind Classes Masking Accessible Names
+**Learning:** When using responsive utility classes (like `hidden lg:inline`) to hide text on smaller screens (e.g., mobile viewports), the parent interactive element (`<button>` or `<a>`) loses its accessible name for screen readers if it only contains an icon ligature (`<span class="material-symbols-outlined">rocket_launch</span>`). Screen readers will incorrectly read out the raw icon text (e.g., "rocket launch" instead of "Deploy").
+**Action:** Always add an explicit `aria-label` to the parent interactive element and `aria-hidden="true"` to the icon element when responsive text-hiding techniques are used. This ensures consistent accessibility across all screen sizes.
