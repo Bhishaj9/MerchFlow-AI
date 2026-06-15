@@ -1,0 +1,3 @@
+## 2024-10-24 - Screen Reader Support for Responsive Buttons
+**Learning:** Buttons or links with visually hidden text on smaller screens (e.g., using `hidden lg:inline` Tailwind classes) require an explicit `aria-label` attribute on the parent interactive element to ensure consistent screen reader accessibility across all viewport sizes. Also, structural icons (`material-symbols-outlined`) must have `aria-hidden="true"` to prevent raw ligatures from being announced.
+**Action:** Always add `aria-label` to interactive elements when their descriptive text might be hidden on smaller screens or if they consist purely of icons. Ensure icons inside these interactive elements are marked with `aria-hidden="true"`.
