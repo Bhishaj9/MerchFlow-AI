@@ -1,0 +1,3 @@
+## 2024-05-24 - Screen Reader Compatibility with Responsive Hidden Text
+**Learning:** When using responsive utility classes (like `hidden lg:inline`) to hide text inside an interactive element (`<button>` or `<a>`) on smaller screens, screen readers may read the raw ligature text (like "rocket_launch" or "arrow_back") from icon elements (like Material Symbols) if `aria-hidden="true"` is not applied to the icon and an `aria-label` is not applied to the parent.
+**Action:** Always add an explicit `aria-label` to interactive elements containing responsive hidden text and icon ligatures, and add `aria-hidden="true"` to the icon element itself.
