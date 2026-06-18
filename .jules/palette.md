@@ -1,0 +1,3 @@
+## 2024-05-20 - Adding ARIA Labels to Icon-Only Buttons
+**Learning:** Found several buttons across different HTML templates (`dashboard.html`, `glassui.html`, `code.html`) that rely solely on icons (Material Symbols) for their content without any text. This is an accessibility issue because screen readers won't be able to announce the purpose of these buttons to visually impaired users.
+**Action:** When using icon-only buttons, always provide an `aria-label` attribute describing the button's action, and ensure the icon span itself has `aria-hidden="true"` to prevent screen readers from reading out the raw ligature text (like "rocket_launch").
