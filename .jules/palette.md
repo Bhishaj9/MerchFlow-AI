@@ -1,0 +1,3 @@
+## 2023-10-24 - Explicit ARIA Labels for Responsive Text
+**Learning:** When using responsive buttons or links where visible text is hidden on smaller screens via Tailwind classes (e.g., `hidden lg:inline`), the interactive element loses its accessible name on those viewports, causing screen reader confusion. Additionally, raw material icons inside these elements are read out if not masked.
+**Action:** Always add an explicit `aria-label` attribute to the parent interactive element (`<button>` or `<a>`) to maintain consistent screen reader accessibility across all viewport sizes, and add `aria-hidden="true"` to the inner icon element to prevent it from being read.
