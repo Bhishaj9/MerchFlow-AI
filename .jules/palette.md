@@ -1,0 +1,3 @@
+## 2024-05-18 - Responsive Button Accessibility
+**Learning:** Buttons with visible text that hides on smaller screens via responsive classes (like `hidden lg:inline`) lose their accessible name on mobile if no explicit ARIA label is provided. Icon elements should also have `aria-hidden="true"`.
+**Action:** Always provide `aria-label` to buttons where the visible text might be visually hidden at smaller breakpoints, and set `aria-hidden="true"` on their corresponding structural icon elements.
