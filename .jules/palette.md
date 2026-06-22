@@ -1,0 +1,3 @@
+## 2026-10-27 - Icon-only Button Accessibility
+**Learning:** When using responsive buttons or links where visible text is hidden on smaller screens via Tailwind classes (e.g., `hidden lg:inline`), ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` attribute before applying `aria-hidden="true"` to child Material Symbols. This prevents screen readers from completely ignoring the interactive element on smaller viewports.
+**Action:** Always verify parent interactive elements have an accessible name (either visible text that is always rendered or an explicit `aria-label`) before hiding decorative/structural child elements from screen readers.
