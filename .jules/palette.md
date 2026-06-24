@@ -1,0 +1,3 @@
+## 2025-06-24 - [Accessible Icon Buttons]
+**Learning:** Structural icon elements (like `<span class="material-symbols-outlined">`) need `aria-hidden="true"` to prevent screen readers from reading raw ligatures. Furthermore, responsive buttons using `hidden sm:inline` for text require an explicit `aria-label` on the parent button to maintain accessibility on smaller screens.
+**Action:** Always add `aria-hidden="true"` to structural icons. If a button hides its text on mobile or is icon-only, apply a descriptive `aria-label` to the parent `<button>` or `<a>` element.
