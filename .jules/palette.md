@@ -1,0 +1,4 @@
+## 2025-01-20 - Ensure Accessible Names for Buttons with Visually Hidden Text
+
+**Learning:** When using responsive utilities (e.g., Tailwind's `hidden lg:inline`) to hide a button's visible text on smaller viewports, the button loses its accessible name for screen reader users on those devices, especially if the button's only other content is an icon (like a Material Symbols span). Furthermore, screen readers may announce the raw ligature text of the icon (e.g., "rocket_launch") if it isn't explicitly hidden from assistive technologies.
+**Action:** Always add an explicit `aria-label` to the parent interactive element (`<button>` or `<a>`) to guarantee a consistent accessible name across all screen sizes. Additionally, always add `aria-hidden="true"` to structural icon elements (like `<span class="material-symbols-outlined">`) to prevent raw ligatures from being read.
