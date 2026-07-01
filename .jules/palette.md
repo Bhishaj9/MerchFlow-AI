@@ -1,0 +1,4 @@
+## 2024-06-15 - ARIA Labels for Responsive Interactive Elements
+**Learning:** When using Tailwind CSS utility classes like `hidden lg:inline` to hide descriptive text inside interactive elements (like `<button>` or `<a>`) on smaller viewports, the elements can become effectively "icon-only" to screen readers if the viewport is small. This causes screen readers to announce the raw text ligature of the icon (e.g., "rocket_launch" instead of "Deploy Application").
+
+**Action:** Always ensure that interactive elements which might hide their descriptive text at certain breakpoints include an explicit `aria-label` attribute on the parent `<button>` or `<a>`. Concurrently, apply `aria-hidden="true"` to the structural icon elements (like `<span class="material-symbols-outlined">`) to prevent screen readers from announcing the ligature string, ensuring a consistent and accessible experience regardless of viewport size.
