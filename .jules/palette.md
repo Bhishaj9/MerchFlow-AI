@@ -1,0 +1,3 @@
+## 2026-07-02 - [Icon Accessibility]
+**Learning:** Structural icon ligatures (like Material Symbols `<span class="material-symbols-outlined">icon_name</span>`) require `aria-hidden="true"` so screen readers don't read out the raw ligature text (e.g., "content underscore copy"). Additionally, when applying this to icon-only buttons, it's critical that the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label`, otherwise the button becomes completely invisible/unlabeled to screen readers.
+**Action:** Always add `aria-hidden="true"` to icon elements and ensure their parent interactive elements have a descriptive `aria-label` attribute.
