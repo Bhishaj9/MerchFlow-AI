@@ -1,0 +1,3 @@
+## 2026-07-04 - [Responsive Icon Button Accessibility]
+**Learning:** [When applying `aria-hidden="true"` to structural icon elements (like `<span class="material-symbols-outlined">`) to prevent screen readers from reading raw ligatures, the parent interactive element (`<button>` or `<a>`) can become completely invisible to screen readers if its visible text is hidden on smaller screens via responsive CSS classes (e.g., `hidden lg:inline`).]
+**Action:** [Crucially, before applying `aria-hidden="true"` to an icon, you must ensure its parent interactive element has an explicit `aria-label` attribute if there's any chance the text is hidden (or if it's purely an icon-only button) to maintain consistent screen reader accessibility across all viewport sizes.]
