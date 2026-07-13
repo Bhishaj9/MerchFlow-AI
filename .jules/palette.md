@@ -1,0 +1,3 @@
+## 2026-10-27 - [Aria Labels on Responsive Buttons]
+**Learning:** When using responsive buttons or links where visible text is hidden on smaller screens via Tailwind classes (e.g., `hidden lg:inline`), ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` attribute. Structural icon elements (like `<span class="material-symbols-outlined">`) should also include `aria-hidden="true"` to prevent screen readers from reading raw ligatures.
+**Action:** Always add `aria-label` to buttons with conditionally hidden text and `aria-hidden="true"` to structural icons within them to maintain consistent screen reader accessibility across all viewport sizes.
