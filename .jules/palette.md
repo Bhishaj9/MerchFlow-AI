@@ -1,0 +1,3 @@
+## 2026-07-14 - Accessible Responsive Buttons
+**Learning:** When using responsive buttons or links where visible text is hidden on smaller screens via Tailwind classes (e.g., `hidden lg:inline`), screen readers will not announce the button's purpose on those smaller screens if no explicit `aria-label` is provided. Icon elements should also use `aria-hidden="true"` when accompanied by `aria-label` to avoid redundant or confusing announcements.
+**Action:** Always ensure the parent interactive element (`<button>` or `<a>`) has an explicit `aria-label` attribute and child icons have `aria-hidden="true"` to maintain consistent screen reader accessibility across all viewport sizes.
