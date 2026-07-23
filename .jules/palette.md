@@ -1,0 +1,3 @@
+## 2026-07-23 - Accessibility: ARIA hidden for structural icons
+**Learning:** Structural icon elements using Material Symbols ligatures (e.g., `<span class="material-symbols-outlined">`) are read aloud by screen readers if they lack `aria-hidden="true"`, causing confusion (e.g., reading "content_copy" instead of acting as a visual icon).
+**Action:** Always add `aria-hidden="true"` to structural icon elements (like `<span>` and `<i>` tags containing icon ligatures) when the parent interactive element already has an accessible name (like `aria-label` or visible text). Note: Never add `aria-hidden="true"` to the parent interactive element itself.
